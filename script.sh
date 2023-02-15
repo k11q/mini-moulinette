@@ -20,10 +20,10 @@ else
 fi
 
 # Test case 2: One argument
-if [ "$(./print_args QBWTtLu8RI9Kvfr)" != "QBWTtLu8RI9Kvfrs" ]; then
-  echo -e "${RED}Test case 2 failed: Expected output: 'QBWTtLu8RI9Kvfrs', actual output: '$(./print_args QBWTtLu8RI9Kvfr)'${NC}"
+if [ "$(./print_args QBWTtLu8RI9Kvfr)" != "QBWTtLu8RI9Kvfr" ]; then
+  echo -e "${RED}Test case 2 failed: Expected output: 'QBWTtLu8RI9Kvfr', actual output: '$(./print_args QBWTtLu8RI9Kvfr)'${NC}"
   FAILED=1
-else
+else 
   echo -e "${GREEN}Test case 2 passed.${NC}"
 fi
 
