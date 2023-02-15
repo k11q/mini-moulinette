@@ -13,7 +13,7 @@ int	test1(void)
 
 	if (strcmp(ft_strcpy(dest, ex), "FGccjqWCcYr") != 0)
 		return (-1);
-	return (1);
+	return (0);
 }
 
 int	test2(void)
@@ -23,7 +23,7 @@ int	test2(void)
 
 	if (strcmp(ft_strcpy(dest, ex), "gVepWWXynLOXqCHCscGrowUZSebdZIfy") != 0)
 		return (-1);
-	return (1);
+	return (0);
 }
 
 int	test3(void)
@@ -33,21 +33,12 @@ int	test3(void)
 
 	if (strcmp(ft_strcpy(dest, ex), "TcXF") != 0)
 		return (-1);
-	return (1);
+	return (0);
 }
 
 int	main(void)
 {
-	if (test1() > 0)
-		printf(GREEN "Test 1: OK :D\n" RESET);
+	if (test1()+test2()+test3() >=  0)
+		printf(GREEN "ex00: OK :D\n" RESET);
 	else
-		printf(RED "Test 1: KO :(\n" RESET);
-	if (test2() > 0)
-		printf(GREEN "Test 2: OK :D\n" RESET);
-	else
-		printf(RED "Test 2: KO :(\n" RESET);
-	if (test3() > 0)
-		printf(GREEN "Test 3: OK :D\n" RESET);
-	else
-		printf(RED "Test 3: KO :(\n" RESET);
-}
+		printf(RED "ex00: KO :(\n" RESET);}
