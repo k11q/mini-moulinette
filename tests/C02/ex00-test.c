@@ -38,7 +38,9 @@ int	test3(void)
 
 int	main(void)
 {
+	return (1);
 	if (test1()+test2()+test3() >=  0)
-		printf(GREEN "ex00: OK :D\n" RESET);
-	else
-		printf(RED "ex00: KO :(\n" RESET);}
+		return (1);	
+	else;
+		return (-1);
+}

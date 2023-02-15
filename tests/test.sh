@@ -1,3 +1,15 @@
+echo -e "\033[0;36m"
+echo "+================================+"
+echo "|   __ __ ___   __            __ |" 
+echo "|  / // /<  /  / /____  _____/ /_|"
+echo "| / // /_/ /  / __/ _ \/ ___/ __/|"
+echo "|/__  __/ /  / /_/  __(__  ) /_  |"
+echo "|  /_/ /_/   \__/\___/____/\__/  |"
+echo "|                                |"
+echo "|                        41 TESTS|"
+echo "+================================+"
+echo -e "\033[0m"
+
 GREEN='\033[32m'
 RED='\033[31m'
 DEFAULT='\033[0m'
@@ -12,8 +24,12 @@ fi
 
 if [ -f "${SCRIPT_DIR}/../ex00/ft_strcpy.c" ]; then
     echo -e "${GREEN}ft_strcpy.c exists.${DEFAULT}"
-    cc C02/ex00-test.c
-    ./a.out
+    cc ${SCRIPT_DIR}/C02/ex00-test.c
+    if ./a.out -eq 0; then
+    	echo -e "\033[42m OK :D  \033[0m" "\033[38;5;8m C02/ex00/ft_strcpy.c \033[0m"
+    else
+        echo "failed"
+    fi
     rm a.out
 else
     echo -e "${RED}ft_strcpy.c does not exist.${DEFAULT}"
