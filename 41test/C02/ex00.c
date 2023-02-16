@@ -4,7 +4,7 @@
 #include "../../ex00/ft_strcpy.c"
 #define RESET   "\033[0m"
 #define GREEN   "\033[32m"
-#define RED	"\033[31m"
+#define RED		"\033[31m"
 
 int	test1(void)
 {
@@ -42,5 +42,4 @@ int	main(void)
 		return (0);	
 	else;
 		return (-1);
-	
 }
