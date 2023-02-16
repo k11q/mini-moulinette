@@ -11,6 +11,7 @@ GREY='\033[38;5;8m'
 BOLD='\033[1m'
 DEFAULT='\033[0m'
 CHECKMARK='\xE2\x9C\x93'
+DATA=$(cat data.json)
 
 #utils
 index=0
@@ -36,6 +37,8 @@ main()
             index=0
             for assignment in $dir/*; do
                 assignmentname="$(basename "$assignment")"
+                file_name=$(jq -r ".C02[] | select(.exercise == \"$assignmentname\").file" data.json)
+                echo -e "${PURPLE}$file_name${DEFAULT}"
                 if [ -d "$assignment" ]; then
                     echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [1] ./$assignment exists.${DEFAULT}"
                     index2=0
@@ -59,7 +62,7 @@ main()
                     fi
                     ((index++))
                     RESULT+="$assignmentname: OK"
-                    echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}ft_strcpy.c"
+                    echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
                     space
                 fi
             done
