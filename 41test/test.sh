@@ -26,6 +26,7 @@ checks=0
 passed=0
 marks=0
 questions=0
+dirname_found=0
 break_score=0
 score_false=0
 result=""
@@ -38,6 +39,7 @@ main()
     for dir in ./tests/* ; do
         dirname="$(basename "$dir")"
         if [ -d "$dir" ] && [ "$dirname" == "$1" ]; then
+            dirname_found=1
             print_header
             echo "Generating test for ${1}..."
             space
@@ -107,11 +109,12 @@ main()
                 fi
             done
             break
-        else
-            echo -e "${RED}Sorry. Tests for $1 isn't available yet. Consider contributing at Github.${DEFAULT}"
-            exit 1
         fi
     done
+    if [ $dirname_found = 0 ]; then
+        echo -e "${RED}Sorry. Tests for $1 isn't available yet. Consider contributing at Github.${DEFAULT}"
+        exit 1
+    fi
     echo -e "${PURPLE}-----------------------------------${DEFAULT}"
     space
     PERCENT=$((100 * marks / questions))
