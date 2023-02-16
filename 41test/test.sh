@@ -59,7 +59,7 @@ main()
                                 fi
                                 rm ${test%.c}
                             else
-                                echo -e "   ""${GREY} [$(($index2+1))] ./ft_strcpy does not compile. ${RED}FAILED${DEFAULT}"
+                                echo -e "    ""${GREY}[$(($index2+1))] ./ft_strcpy does not compile. ${RED}FAILED${DEFAULT}"
                             fi
                         done
                         if [ $index -gt 0 ]; then
@@ -72,7 +72,7 @@ main()
                         space
                     fi
                 else
-                    echo -e "${RED}$file_name cannot compile.${DEFAULT}"
+                    echo -e "${RED}    $file_name cannot compile.${DEFAULT}"
                     if [ $index -gt 0 ]; then
                             RESULT+=", "
                         fi
