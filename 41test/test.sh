@@ -64,12 +64,12 @@ main()
                             test_error=$(echo "$test_data" | jq -r '.error')
                             if cc -o ${test%.c} $test 2> /dev/null; then
                                 if ./${test%.c} = 0; then
-                                    echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2))] $test_error${DEFAULT}"
+                                    #echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2))] $test_error${DEFAULT}"
                                     passed=$((passed+1))
                                 else
                                     break_score=1
                                     score_false=1
-                                    echo "failed"
+                                    #echo "failed"
                                 fi
                                 rm ${test%.c}
                             else
