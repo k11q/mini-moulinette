@@ -4,19 +4,209 @@
 			"id": "01",
 			"exercise": "ex00",
 			"type": "function",
-			"file": "ft_strcpy.c"
+			"file": "ft_strcpy.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
 		},
 		{
 			"id": "02",
 			"exercise": "ex01",
 			"type": "function",
-			"file": "ft_strncpy.c"
+			"file": "ft_strncpy.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
 		},
 		{
-			"id": "03",
+			"id": "3",
 			"exercise": "ex02",
 			"type": "function",
-			"file": "ft_str_is_alpha.c"
+			"file": "ft_str_is_alpha.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "4",
+			"exercise": "ex03",
+			"type": "function",
+			"file": "ft_str_is_numeric.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "5",
+			"exercise": "ex04",
+			"type": "function",
+			"file": "ft_str_is_lowercase.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "6",
+			"exercise": "ex05",
+			"type": "function",
+			"file": "ft_str_is_uppercase.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "7",
+			"exercise": "ex06",
+			"type": "function",
+			"file": "ft_str_is_printable.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "8",
+			"exercise": "ex07",
+			"type": "function",
+			"file": "ft_strupcase.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "9",
+			"exercise": "ex08",
+			"type": "function",
+			"file": "ft_strlowcase.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "10",
+			"exercise": "ex09",
+			"type": "function",
+			"file": "ft_strcapitalize.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "11",
+			"exercise": "ex10",
+			"type": "function",
+			"file": "ft_strlcpy.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "12",
+			"exercise": "ex11",
+			"type": "function",
+			"file": "ft_putstr_non_printable.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
+		},
+		{
+			"id": "13",
+			"exercise": "ex12",
+			"type": "function",
+			"file": "ft_print_memory.c",
+			"tests":[{
+				"name": "test1",
+				"error": "Test 1 passed"
+			},{
+				"name": "test2",
+				"error": "Test 2 passed"
+			},{
+				"name": "test3",
+				"error": "Test 3 passed"
+			}]
 		}
 	]
 }

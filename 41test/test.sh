@@ -16,13 +16,17 @@ DATA=$(cat data.json)
 #utils
 index=0
 index2=0
+assignment_data=NULL
+test_data=NULL
+test_error=NULL
+test_name=NULL
 
 #variables
-CHECKS=0
-PASSED=0
-MARKS=0
-QUESTIONS=0
-RESULT=""
+checks=0
+passed=0
+marks=0
+questions=0
+result=""
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 dirname_found=0
 
@@ -38,45 +42,54 @@ main()
             dirname_found=1
             index=0
             for assignment in $dir/*; do
-                QUESTIONS=$((QUESTIONS+1))
+                questions=$((questions+1))
                 assignmentname="$(basename "$assignment")"
-                file_name=$(jq -r ".C02[] | select(.exercise == \"$assignmentname\").file" data.json)
-                echo -e "${PURPLE}$file_name${DEFAULT}"
+                file_name=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignmentname\").file")
+                assignment_data=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignmentname\")")
+                echo -e "${PINK}$assignmentname${DEFAULT}"
                 if cc -o test1 $assignment/test1.c 2> /dev/null; then
                     rm test1
+                    checks=$((checks+1))
+                    passed=$((passed+1))
                     if [ -d "$assignment" ]; then
-                        echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [1] ./$assignment exists.${DEFAULT}"
                         index2=0
                         for test in $assignment/*.c; do
                             ((index2++))
-                            CHECKS=$((CHECKS+1))
+                            checks=$((checks+1))
+                            test_name=${test##*/}
+                            test_name=${test_name%.c}
+                            test_data=$(echo "$assignment_data" | jq '.tests[] | select(.name == "'"$test_name"'")')
+                            test_error=$(echo "$test_data" | jq -r '.error')
                             if cc -o ${test%.c} $test 2> /dev/null; then
                                 if ./${test%.c} = 0; then
-                                    echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2+1))] ./ft_strcpy can be compiled.${DEFAULT}"
-                                    PASSED=$((PASSED+1))
+                                    echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2+1))] $test_error${DEFAULT}"
+                                    passed=$((passed+1))
                                 else
                                     echo "failed"
                                 fi
                                 rm ${test%.c}
                             else
-                                echo -e "    ""${GREY}[$(($index2+1))] ./ft_strcpy does not compile. ${RED}FAILED${DEFAULT}"
+                                echo -e "    ""${GREY}[$(($index2+1))] $test_error ${RED}FAILED${DEFAULT}"
                             fi
                         done
                         if [ $index -gt 0 ]; then
-                            RESULT+=", "
+                            result+=", "
                         fi
-                        RESULT+="$assignmentname: OK"
+                        result+="$assignmentname: OK"
                         echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
-                        MARKS=$((MARKS+1))
+                        marks=$((marks+1))
                         ((index++))
                         space
+                    else
+                        echo -e "${RED}    $assignmentname does not exist.${DEFAULT}"
                     fi
                 else
+                    checks=$((checks+1))
                     echo -e "${RED}    $file_name cannot compile.${DEFAULT}"
                     if [ $index -gt 0 ]; then
-                            RESULT+=", "
+                            result+=", "
                         fi
-                    RESULT+="$assignmentname: KO"
+                    result+="$assignmentname: KO"
                 fi
             done
             break
@@ -87,16 +100,18 @@ main()
     done
     echo -e "${PURPLE}-----------------------------------${DEFAULT}"
     space
-    PERCENT=$((100 * MARKS / QUESTIONS))
-    echo -e "${GREY}Total checks:  ${DEFAULT}""${GREEN}${PASSED} passed  ${DEFAULT} ""${CHECKS} total"
-    echo -e "${GREY}Result:        ${DEFAULT}${RESULT}"
+    PERCENT=$((100 * marks / questions))
+    #echo -e "Total checks:  ""${GREEN}${passed} passed  ${DEFAULT} ""${checks} total"
+    echo -e "Result:        ${result}"
     if [ $PERCENT -ge 50 ]; then
-        echo -e "${GREY}Final score:   ${DEFAULT}""${GREEN}$(echo $PERCENT | bc)/100${DEFAULT}"
-        echo -e "${GREY}Status:        ${DEFAULT}""${GREEN}PASSED${DEFAULT}"
+        echo -e "Final score:   ""${GREEN}$(echo $PERCENT | bc)/100${DEFAULT}"
+        echo -e "Status:        ""${GREEN}passed${DEFAULT}"
     else
-        echo -e "${GREY}Final score:   ${DEFAULT}""${RED}$(echo $PERCENT | bc)/100${DEFAULT}"
-        echo -e "${GREY}Status:        ${DEFAULT}""${RED}FAILED${DEFAULT}"
+        echo -e "Final score:   ""${RED}$(echo $PERCENT | bc)/100${DEFAULT}"
+        echo -e "Status:        ""${RED}FAILED${DEFAULT}"
     fi
+    echo -e "${GREY}Tests completed."
+    space
 }
 
 print_header()
@@ -124,6 +139,19 @@ space()
     echo -e ""
 }
 
+check_dependency()
+{
+    if ! command -v jq &> /dev/null; then
+        echo "jq is not installed. To install:"
+        echo "  Ubuntu/Debian:"
+        echo "    sudo apt-get update"
+        echo "    sudo apt-get install jq"
+        echo "  macOS/Homebrew:"
+        echo "    brew install jq"
+    fi
+}
+
+check_dependency
 if [ "${1}" = "" ]; then
     echo "Please select an assignment. e.g. './test.sh C01'"
     exit 1
