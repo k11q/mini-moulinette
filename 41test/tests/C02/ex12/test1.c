@@ -11,6 +11,7 @@
 
 int test1(void)
 {
+	printf("    " RED "[1] Sorry. Test not yet implemented\n");
 	return (-1);
 }
 

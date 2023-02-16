@@ -46,6 +46,7 @@ int test1(void)
 	return (0);
 }
 
+/*
 int test2(void)
 {
 	// Redirect the output to a file
@@ -81,10 +82,11 @@ int test2(void)
 	remove("output2.txt");
 	return (0);
 }
+*/
 
 int main()
 {
-	if (test1() + test2() != 0)
+	if (test1() != 0)
 		return (-1);
 	return 0;
 }

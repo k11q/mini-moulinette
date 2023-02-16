@@ -85,10 +85,10 @@ main()
                         fi
                         if [ $score_false = 0 ]; then
                             result+="${GREEN}$assignment_name: OK${DEFAULT}"
-                            echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignment_name/${DEFAULT}$file_name"
+                            echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$file_name"
                         else
                             result+="${RED}$assignment_name: KO${DEFAULT}"
-                            echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${GREY} $assignment_name/${DEFAULT}$file_name"
+                            echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$file_name"
                         fi
                         if [ $break_score = 0 ]; then
                             marks=$((marks+1))
@@ -102,7 +102,7 @@ main()
                     break_score=1
                     checks=$((checks+1))
                     echo -e "${RED}    $file_name cannot compile.${DEFAULT}"
-                    echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${GREY} $assignment_name/${DEFAULT}$file_name"
+                    echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$file_name"
                     space
                     if [ $index -gt 0 ]; then
                             result+=", "
