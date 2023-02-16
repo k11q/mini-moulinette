@@ -1,4 +1,13 @@
-echo -e "\033[0;36m"
+GREEN='\033[38;5;84m'
+RED='\033[101m'
+BLUE='\033[38;5;45m'
+PURPLE='\033[38;5;63m'
+BG_GREEN='\033[48;5;84m'
+BG_RED='\033[38;5;8m[1]'
+GREY='\033[38;5;8m'
+DEFAULT='\033[0m'
+
+echo -e "${BLUE}"
 echo "+================================+"
 echo "|   __ __ ___   __            __ |" 
 echo "|  / // /<  /  / /____  _____/ /_|"
@@ -7,15 +16,8 @@ echo "|/__  __/ /  / /_/  __(__  ) /_  |"
 echo "|  /_/ /_/   \__/\___/____/\__/  |"
 echo "|                        41 TESTS|"
 echo "+================================+"
-echo -e "\033[0m"
+echo -e "${DEFAULT}"
 
-GREEN='\033[92m'
-RED='\033[101m'
-BLUE='\033[94m'
-BG_GREEN='\033[42m'
-BG_RED='\033[38;5;8m[1]'
-GREY='\033[38;5;8m'
-DEFAULT='\033[0m'
 CHECKS=0
 PASSED=0
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -32,7 +34,7 @@ ls ../* | grep -v "../41test:*" | grep -v "../41test" | column
 if [ "${1}" = "C02" ]; then
 CHECKS=$((CHECKS+1))
 echo -e ""
-echo -e "${BLUE}ex00/ft_strcpy.c${DEFAULT}"
+echo -e "${PURPLE}ex00/ft_strcpy.c${DEFAULT}"
 echo -e ""
 if [ -f "${SCRIPT_DIR}/../ex00/ft_strcpy.c" ]; then
     echo -e "${BG_GREEN} PASS ${DEFAULT}""${GREY} [1] ./ft_strcpy.c exists.${DEFAULT}"
@@ -53,7 +55,8 @@ else
     echo -e " \033[38;5;8m[1] ./ft_strcpy.c does not exists.  ${RED}FAILED${DEFAULT}"
 fi
 echo -e ""
-echo -e "Result:  ${GREEN}OK :D ${GREY}ex00/${DEFAULT}ft_strcpy.c"
+echo -e "${GREY}ex00/${DEFAULT}ft_strcpy.c"
+echo -e "Result:  ${GREEN}OK :D${DEFAULT}"
 echo -e ""
 PERCENT=$((100 * PASSED / CHECKS))
 
