@@ -6,7 +6,7 @@ PURPLE='\033[38;5;63m'
 PINK='\033[38;5;207m'
 BLACK='\033[38;5;0m'
 BG_GREEN='\033[48;5;84m'
-BG_RED='\033[38;5;8m[1]'
+BG_RED='\033[48;5;197m'
 GREY='\033[38;5;8m'
 BOLD='\033[1m'
 DEFAULT='\033[0m'
@@ -26,6 +26,8 @@ checks=0
 passed=0
 marks=0
 questions=0
+break_score=0
+score_false=0
 result=""
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 dirname_found=0
@@ -43,10 +45,10 @@ main()
             index=0
             for assignment in $dir/*; do
                 questions=$((questions+1))
+                score_false=0
                 assignmentname="$(basename "$assignment")"
                 file_name=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignmentname\").file")
                 assignment_data=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignmentname\")")
-                echo -e "${PINK}$assignmentname${DEFAULT}"
                 if cc -o test1 $assignment/test1.c 2> /dev/null; then
                     rm test1
                     checks=$((checks+1))
@@ -62,9 +64,11 @@ main()
                             test_error=$(echo "$test_data" | jq -r '.error')
                             if cc -o ${test%.c} $test 2> /dev/null; then
                                 if ./${test%.c} = 0; then
-                                    echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2+1))] $test_error${DEFAULT}"
+                                    echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2))] $test_error${DEFAULT}"
                                     passed=$((passed+1))
                                 else
+                                    break_score=1
+                                    score_false=1
                                     echo "failed"
                                 fi
                                 rm ${test%.c}
@@ -75,21 +79,31 @@ main()
                         if [ $index -gt 0 ]; then
                             result+=", "
                         fi
-                        result+="$assignmentname: OK"
-                        echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
-                        marks=$((marks+1))
+                        if [ $score_false = 0 ]; then
+                            result+="${GREEN}$assignmentname: OK${DEFAULT}"
+                            echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
+                        else
+                            result+="${RED}$assignmentname: KO${DEFAULT}"
+                            echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
+                        fi
+                        if [ $break_score = 0 ]; then
+                            marks=$((marks+1))
+                        fi
                         ((index++))
                         space
                     else
                         echo -e "${RED}    $assignmentname does not exist.${DEFAULT}"
                     fi
                 else
+                    break_score=1
                     checks=$((checks+1))
                     echo -e "${RED}    $file_name cannot compile.${DEFAULT}"
+                    echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
+                    space
                     if [ $index -gt 0 ]; then
                             result+=", "
                         fi
-                    result+="$assignmentname: KO"
+                    result+="${RED}$assignmentname: KO${DEFAULT}"
                 fi
             done
             break
@@ -110,7 +124,7 @@ main()
         echo -e "Final score:   ""${RED}$(echo $PERCENT | bc)/100${DEFAULT}"
         echo -e "Status:        ""${RED}FAILED${DEFAULT}"
     fi
-    echo -e "${GREY}Tests completed."
+    echo -e "${GREY}Test completed."
     space
 }
 
