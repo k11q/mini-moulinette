@@ -22,6 +22,9 @@ if [ "${1}" = "" ]; then
 else
   echo "Generating test for ${1}..."
 fi
+echo "Collected files:"
+ls ../* | grep -v "../41test:*" | grep -v "../41test" | column
+#find .. -not -path "../41test/*" -not -path "../.*" -type f | sed 's/^..\///' | column | sort -t'/' -k1,1 -k2,2
 echo -e ""
 if [ "${1}" = "C02" ]; then
 CHECKS=$((CHECKS+1))
@@ -81,10 +84,16 @@ else
 fi
 echo -e ""
 PASSED=$((PASSED+1))
+PERCENT=$((100 * PASSED / CHECKS))
 
 echo -e "\033[38;5;8mTotal checks:  ${DEFAULT}""${GREEN}${PASSED} passed  ${DEFAULT} ""${CHECKS} total"
-echo -e "\033[38;5;8mFinal score:   ${DEFAULT}""${GREEN}100/100${DEFAULT}"
+if [ $PERCENT -ge 50 ]; then
+echo -e "\033[38;5;8mFinal score:   ${DEFAULT}""${GREEN}$(echo $PERCENT | bc)/100${DEFAULT}"
 echo -e "\033[38;5;8mStatus:        ${DEFAULT}""${GREEN}PASSED${DEFAULT}"
+else
+echo -e "\033[38;5;8mFinal score:   ${DEFAULT}""${RED}$(echo $PERCENT | bc)/100${DEFAULT}"
+echo -e "\033[38;5;8mStatus:        ${DEFAULT}""${RED}FAILED${DEFAULT}"
+fi
 #echo "Functions used in ft_strcpy.c:"
 #grep -o -E '([a-zA-Z_][a-zA-Z_0-9]*)\(' ../ex00/ft_strcpy.c | sed 's/(/\n/g' | sed 's/.* //g' | sed '/^$/d' | sort -u | tr '\n' ', ' | sed 's/,/, /' | sed 's/, $/\n/'
 fi
