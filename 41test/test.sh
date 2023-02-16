@@ -51,8 +51,8 @@ main()
                 questions=$((questions+1))
                 score_false=0
                 assignment_name="$(basename "$assignment")"
-                file_name=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignment_name\").file")
-                assignment_data=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignment_name\")")
+                file_name=$(echo "$DATA" | jq -r ".$dirname[] | select(.exercise == \"$assignment_name\").file")
+                assignment_data=$(echo "$DATA" | jq -r ".$dirname[] | select(.exercise == \"$assignment_name\")")
                 if cc -o test1 $assignment/test1.c 2> /dev/null; then
                     rm test1
                     checks=$((checks+1))
