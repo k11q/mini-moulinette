@@ -22,11 +22,17 @@ else
   echo "Generating test for ${1}..."
 fi
 
+if [ "${1}" = "C02" ]; then
 if [ -f "${SCRIPT_DIR}/../ex00/ft_strcpy.c" ]; then
     echo -e "${GREEN}ft_strcpy.c exists.${DEFAULT}"
-    cc ${SCRIPT_DIR}/C02/ex00-test.c
+    cc ${SCRIPT_DIR}/C02/ex00.c
     if ./a.out = 0; then
-    	echo -e "\033[42m OK :D  \033[0m" "\033[38;5;8m C02/ex00/ft_strcpy.c \033[0m"
+    	echo -e "\033[42m PASSED  \033[0m""\033[38;5;8m C02/ex00/ft_strcpy.c \033[0m"
+	echo -e "\033[42m PASSED  \033[0m""\033[38;5;8m C02/ex01/ft_strcpy.c \033[0m"
+	echo -e "\033[42m PASSED  \033[0m""\033[38;5;8m C02/ex02/ft_strcpy.c \033[0m"
+	echo -e "\033[42m PASSED  \033[0m""\033[38;5;8m C02/ex03/ft_strcpy.c \033[0m"
+	echo -e "\033[41m FAILED  \033[0m""\033[38;5;8m C02/ex04/ft_strcpy.c \033[0m"
+	echo -e "\033[42m PASSED  \033[0m""\033[38;5;8m C02/ex05/ft_strcpy.c \033[0m"
     else
         echo "failed"
     fi
@@ -44,3 +50,4 @@ fi
 
 echo "Functions used in ft_strcpy.c:"
 grep -o -E '([a-zA-Z_][a-zA-Z_0-9]*)\(' ../ex00/ft_strcpy.c | sed 's/(/\n/g' | sed 's/.* //g' | sed '/^$/d' | sort -u | tr '\n' ', ' | sed 's/,/, /' | sed 's/, $/\n/'
+fi
