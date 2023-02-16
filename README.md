@@ -10,15 +10,24 @@ This is a test suite for 42 assignments, providing automated tests for checking 
 
 To run:
 
-1. Put the cloned repo in your assignment directory it.
+1. Put the `41test` directory in your assignment directory, where you store your ex00, ex01... directories.
+2. Change directory to inside the `41test` directory.
 
-`cd 41test`
+```bash
+cd 41test
+```
 
-`./test.sh <Insert assignment number/>`
+3. Run the `test.sh` from inside.
+
+```bash
+./test.sh <Insert assignment number/>
+```
 
 E.g.:
 
-`./test.sh C02`
+```bash
+./test.sh C02
+```
 
 ## Authors
 
