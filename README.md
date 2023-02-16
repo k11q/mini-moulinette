@@ -1,18 +1,14 @@
-# 41 Test
+# Not Moulinette
 
-This is a test suite for 42 assignments, providing automated tests for checking before submitting your assignments.
+Not Moulinette is a test suite for 42 assignments, providing automated tests for checking before submitting your assignments.
 
 ## Introduction
 
 This is now day 11 of piscine. I have wasted so many hours getting evaluated, doing evaluation, waiting for evaluation, only to come back redoing it again because I kept making silly mistakes. I wish I can check my code thoroughly before submitting, but that too, will take a lot of my time. This is why I build this so I can stop wasting my time and many others, and shut moulinette up with just a single submission.
 
-## Why 41?
-
-42 is basically trademarked and I probably don't want to get sued.
-
 ## Disclaimer
 
-41 Test doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
+Not Moulinette doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
 
 ## Installation
 
@@ -41,8 +37,8 @@ brew install jq
 
 ### Running
 
-1. Put the `41test` directory in your assignment directory, where you store your ex00, ex01... directories.
-2. Change directory to inside the `41test` directory.
+1. Put the `nm` directory in your assignment directory, where you store your ex00, ex01... directories.
+2. Change directory to inside the `nm` directory.
 
 ```bash
 cd 41test
