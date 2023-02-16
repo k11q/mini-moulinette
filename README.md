@@ -37,6 +37,12 @@ E.g.:
 ./test.sh C02
 ```
 
+## Contributing
+
+1. Write an issue on why and what.
+2. When approved, you can create a pull request.
+3. If all checks are passed we'll merge.
+
 ## Authors
 
 [Khairul Haaziq](@khairulhaaziq)
