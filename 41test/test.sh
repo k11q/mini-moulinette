@@ -27,6 +27,7 @@ main()
 {
     print_header
     echo "Generating test for ${1}..."
+    space
     #print_collected_files
     for dir in ./tests/* ; do
         dirname="$(basename "$dir")"
@@ -50,7 +51,7 @@ main()
                             fi
                             rm ${test%.c}
                         else
-                            echo -e " ${GREY} ./ft_strcpy.c does not compile.  ${RED}FAILED${DEFAULT}"
+                            echo -e "   ""${GREY} [$(($index2+1))] ./ft_strcpy does not compile. ${RED}FAILED${DEFAULT}"
                         fi
                     done
                     if [ $index -gt 0 ]; then
@@ -59,13 +60,14 @@ main()
                     ((index++))
                     RESULT+="$assignmentname: OK"
                     echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} ex00/${DEFAULT}ft_strcpy.c"
+                    space
                 fi
             done
         fi
     done
-    echo -e ""
+    space
     echo -e "${PURPLE}-----------------------------------${DEFAULT}"
-    echo -e ""
+    space
     PERCENT=$((100 * PASSED / CHECKS))
     echo -e "${GREY}Total checks:  ${DEFAULT}""${GREEN}${PASSED} passed  ${DEFAULT} ""${CHECKS} total"
     echo -e "${GREY}Result:        ${DEFAULT}${RESULT}"
@@ -96,6 +98,11 @@ print_collected_files()
 {
     echo "Collected files:"
     ls ../* | grep -v "../41test:*" | grep -v "../41test" | column
+}
+
+space()
+{
+    echo -e ""
 }
 
 if [ "${1}" = "" ]; then
