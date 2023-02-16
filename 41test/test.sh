@@ -20,6 +20,8 @@ index2=0
 #variables
 CHECKS=0
 PASSED=0
+MARKS=0
+QUESTIONS=0
 RESULT=""
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 dirname_found=0
@@ -36,34 +38,45 @@ main()
             dirname_found=1
             index=0
             for assignment in $dir/*; do
+                QUESTIONS=$((QUESTIONS+1))
                 assignmentname="$(basename "$assignment")"
                 file_name=$(jq -r ".C02[] | select(.exercise == \"$assignmentname\").file" data.json)
                 echo -e "${PURPLE}$file_name${DEFAULT}"
-                if [ -d "$assignment" ]; then
-                    echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [1] ./$assignment exists.${DEFAULT}"
-                    index2=0
-                    for test in $assignment/*.c; do
-                        ((index2++))
-                        CHECKS=$((CHECKS+1))
-                        if cc -o ${test%.c} $test 2> /dev/null; then
-                            if ./${test%.c} = 0; then
-                                echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2+1))] ./ft_strcpy can be compiled.${DEFAULT}"
-                                PASSED=$((PASSED+1))
+                if cc -o test1 $assignment/test1.c 2> /dev/null; then
+                    rm test1
+                    if [ -d "$assignment" ]; then
+                        echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [1] ./$assignment exists.${DEFAULT}"
+                        index2=0
+                        for test in $assignment/*.c; do
+                            ((index2++))
+                            CHECKS=$((CHECKS+1))
+                            if cc -o ${test%.c} $test 2> /dev/null; then
+                                if ./${test%.c} = 0; then
+                                    echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2+1))] ./ft_strcpy can be compiled.${DEFAULT}"
+                                    PASSED=$((PASSED+1))
+                                else
+                                    echo "failed"
+                                fi
+                                rm ${test%.c}
                             else
-                                echo "failed"
+                                echo -e "   ""${GREY} [$(($index2+1))] ./ft_strcpy does not compile. ${RED}FAILED${DEFAULT}"
                             fi
-                            rm ${test%.c}
-                        else
-                            echo -e "   ""${GREY} [$(($index2+1))] ./ft_strcpy does not compile. ${RED}FAILED${DEFAULT}"
+                        done
+                        if [ $index -gt 0 ]; then
+                            RESULT+=", "
                         fi
-                    done
-                    if [ $index -gt 0 ]; then
-                        RESULT+=", "
+                        RESULT+="$assignmentname: OK"
+                        echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
+                        MARKS=$((MARKS+1))
+                        ((index++))
+                        space
                     fi
-                    ((index++))
-                    RESULT+="$assignmentname: OK"
-                    echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
-                    space
+                else
+                    echo -e "${RED}$file_name cannot compile.${DEFAULT}"
+                    if [ $index -gt 0 ]; then
+                            RESULT+=", "
+                        fi
+                    RESULT+="$assignmentname: KO"
                 fi
             done
             break
@@ -74,7 +87,7 @@ main()
     done
     echo -e "${PURPLE}-----------------------------------${DEFAULT}"
     space
-    PERCENT=$((100 * PASSED / CHECKS))
+    PERCENT=$((100 * MARKS / QUESTIONS))
     echo -e "${GREY}Total checks:  ${DEFAULT}""${GREEN}${PASSED} passed  ${DEFAULT} ""${CHECKS} total"
     echo -e "${GREY}Result:        ${DEFAULT}${RESULT}"
     if [ $PERCENT -ge 50 ]; then

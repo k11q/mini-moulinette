@@ -3,16 +3,19 @@
 		{
 			"id": "01",
 			"exercise": "ex00",
+			"type": "function",
 			"file": "ft_strcpy.c"
 		},
 		{
 			"id": "02",
 			"exercise": "ex01",
+			"type": "function",
 			"file": "ft_strncpy.c"
 		},
 		{
 			"id": "03",
 			"exercise": "ex02",
+			"type": "function",
 			"file": "ft_str_is_alpha.c"
 		}
 	]
