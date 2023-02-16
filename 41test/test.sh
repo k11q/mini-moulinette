@@ -9,7 +9,7 @@ BG_RED='\033[38;5;8m[1]'
 GREY='\033[38;5;8m'
 BOLD='\033[1m'
 DEFAULT='\033[0m'
-start_time=$(date +%s%N)
+start=$(date +%s.%N)
 
 echo -e "${BLUE}"
 echo "+================================+"
@@ -75,9 +75,10 @@ else
 echo -e "${GREY}Final score:   ${DEFAULT}""${RED}$(echo $PERCENT | bc)/100${DEFAULT}"
 echo -e "${GREY}Status:        ${DEFAULT}""${RED}FAILED${DEFAULT}"
 fi
-end_time=$(date +%s%N)
-total_time=$(( ( $end_time - $start_time ) / 1000000 ))
-echo -e "${GREY}Time:          ${DEFAULT}""${total_time} ms"
+end=$(date +%s.%N)
+total_time=$(echo "($end - $start) * 1000" | bc)
+echo "scale=3; $total_time / 1000" | bc | tr -d '\n'
+echo -e "${GREY}Time:          ${DEFAULT}""$total_time ms"
 #echo "Functions used in ft_strcpy.c:"
 #grep -o -E '([a-zA-Z_][a-zA-Z_0-9]*)\(' ../ex00/ft_strcpy.c | sed 's/(/\n/g' | sed 's/.* //g' | sed '/^$/d' | sort -u | tr '\n' ', ' | sed 's/,/, /' | sed 's/, $/\n/'
 fi
