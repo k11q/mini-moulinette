@@ -65,7 +65,6 @@ main()
             done
         fi
     done
-    space
     echo -e "${PURPLE}-----------------------------------${DEFAULT}"
     space
     PERCENT=$((100 * PASSED / CHECKS))
