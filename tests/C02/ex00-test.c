@@ -38,9 +38,9 @@ int	test3(void)
 
 int	main(void)
 {
-	return (1);
 	if (test1()+test2()+test3() >=  0)
-		return (1);	
+		return (0);	
 	else;
 		return (-1);
+	
 }

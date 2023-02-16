@@ -25,7 +25,7 @@ fi
 if [ -f "${SCRIPT_DIR}/../ex00/ft_strcpy.c" ]; then
     echo -e "${GREEN}ft_strcpy.c exists.${DEFAULT}"
     cc ${SCRIPT_DIR}/C02/ex00-test.c
-    if ./a.out -eq 0; then
+    if ./a.out = 0; then
     	echo -e "\033[42m OK :D  \033[0m" "\033[38;5;8m C02/ex00/ft_strcpy.c \033[0m"
     else
         echo "failed"
