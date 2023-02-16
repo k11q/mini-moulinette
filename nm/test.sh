@@ -40,6 +40,7 @@ main()
     for dir in ./tests/* ; do
         dirname="$(basename "$dir")"
         available_assignments+="$dirname "
+
         if [ -d "$dir" ] && [ "$dirname" == "$1" ]; then
             dirname_found=1
             print_header
@@ -47,52 +48,41 @@ main()
             space
             dirname_found=1
             index=0
+
             for assignment in $dir/*; do
                 questions=$((questions+1))
                 score_false=0
                 assignment_name="$(basename "$assignment")"
                 file_name=$(echo "$DATA" | jq -r ".$dirname[] | select(.exercise == \"$assignment_name\").file")
                 assignment_data=$(echo "$DATA" | jq -r ".$dirname[] | select(.exercise == \"$assignment_name\")")
+
                 if cc -o test1 $assignment/test1.c 2> /dev/null; then
                     rm test1
                     checks=$((checks+1))
                     passed=$((passed+1))
+
                     if [ -d "$assignment" ]; then
                         index2=0
+
                         for test in $assignment/*.c; do
                             ((index2++))
                             checks=$((checks+1))
-                            test_name=${test##*/}
-                            test_name=${test_name%.c}
-                            test_data=$(echo "$assignment_data" | jq '.tests[] | select(.name == "'"$test_name"'")')
-                            test_error=$(echo "$test_data" | jq -r '.error')
+                            set_test_data
+
                             if cc -o ${test%.c} $test 2> /dev/null; then
+
                                 if ./${test%.c} = 0; then
-                                    #echo -e "${GREEN}  ${CHECKMARK}${DEFAULT}""${GREY} [$(($index2))] $test_error${DEFAULT}"
                                     passed=$((passed+1))
                                 else
                                     break_score=1
                                     score_false=1
-                                    #echo "failed"
                                 fi
                                 rm ${test%.c}
                             else
                                 echo -e "    ""${GREY}[$(($index2+1))] $test_error ${RED}FAILED${DEFAULT}"
                             fi
                         done
-                        if [ $index -gt 0 ]; then
-                            result+=", "
-                        fi
-                        if [ $score_false = 0 ]; then
-                            result+="${GREEN}$assignment_name: OK${DEFAULT}"
-                            echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$file_name"
-                        else
-                            result+="${RED}$assignment_name: KO${DEFAULT}"
-                            echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$file_name"
-                        fi
-                        if [ $break_score = 0 ]; then
-                            marks=$((marks+1))
-                        fi
+                        print_test_result
                         ((index++))
                         space
                     else
@@ -104,34 +94,23 @@ main()
                     echo -e "${RED}    $file_name cannot compile.${DEFAULT}"
                     echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$file_name"
                     space
+
                     if [ $index -gt 0 ]; then
                             result+=", "
-                        fi
+                    fi
                     result+="${RED}$assignment_name: KO${DEFAULT}"
                 fi
             done
             break
         fi
     done
+    
     if [ $dirname_found = 0 ]; then
         echo -e "${RED}Sorry. Tests for $1 isn't available yet. Consider contributing at Github.${DEFAULT}"
         echo -e "Available assignment tests: ${PURPLE}$available_assignments${DEFAULT}"
         exit 1
     fi
-    echo -e "${PURPLE}-----------------------------------${DEFAULT}"
-    space
-    PERCENT=$((100 * marks / questions))
-    #echo -e "Total checks:  ""${GREEN}${passed} passed  ${DEFAULT} ""${checks} total"
-    echo -e "Result:        ${result}"
-    if [ $PERCENT -ge 50 ]; then
-        echo -e "Final score:   ""${GREEN}$(echo $PERCENT | bc)/100${DEFAULT}"
-        echo -e "Status:        ""${GREEN}passed${DEFAULT}"
-    else
-        echo -e "Final score:   ""${RED}$(echo $PERCENT | bc)/100${DEFAULT}"
-        echo -e "Status:        ""${RED}FAILED${DEFAULT}"
-    fi
-    echo -e "${GREY}Test completed."
-    space
+    print_footer
 }
 
 print_header()
@@ -157,6 +136,49 @@ print_collected_files()
 space()
 {
     echo -e ""
+}
+
+print_test_result()
+{
+    if [ $index -gt 0 ]; then
+        result+=", "
+    fi
+    if [ $score_false = 0 ]; then
+        result+="${GREEN}$assignment_name: OK${DEFAULT}"
+        echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$file_name"
+    else
+        result+="${RED}$assignment_name: KO${DEFAULT}"
+        echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$file_name"
+    fi
+    if [ $break_score = 0 ]; then
+        marks=$((marks+1))
+    fi
+}
+
+print_footer()
+{
+    echo -e "${PURPLE}-----------------------------------${DEFAULT}"
+    space
+    PERCENT=$((100 * marks / questions))
+    #echo -e "Total checks:  ""${GREEN}${passed} passed  ${DEFAULT} ""${checks} total"
+    echo -e "Result:        ${result}"
+    if [ $PERCENT -ge 50 ]; then
+        echo -e "Final score:   ""${GREEN}$(echo $PERCENT | bc)/100${DEFAULT}"
+        echo -e "Status:        ""${GREEN}passed${DEFAULT}"
+    else
+        echo -e "Final score:   ""${RED}$(echo $PERCENT | bc)/100${DEFAULT}"
+        echo -e "Status:        ""${RED}FAILED${DEFAULT}"
+    fi
+    echo -e "${GREY}Test completed."
+    space
+}
+
+set_test_data()
+{
+    test_name=${test##*/}
+    test_name=${test_name%.c}
+    test_data=$(echo "$assignment_data" | jq '.tests[] | select(.name == "'"$test_name"'")')
+    test_error=$(echo "$test_data" | jq -r '.error')
 }
 
 check_dependency()
