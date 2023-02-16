@@ -46,9 +46,9 @@ main()
             for assignment in $dir/*; do
                 questions=$((questions+1))
                 score_false=0
-                assignmentname="$(basename "$assignment")"
-                file_name=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignmentname\").file")
-                assignment_data=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignmentname\")")
+                assignment_name="$(basename "$assignment")"
+                file_name=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignment_name\").file")
+                assignment_data=$(echo "$DATA" | jq -r ".C02[] | select(.exercise == \"$assignment_name\")")
                 if cc -o test1 $assignment/test1.c 2> /dev/null; then
                     rm test1
                     checks=$((checks+1))
@@ -80,11 +80,11 @@ main()
                             result+=", "
                         fi
                         if [ $score_false = 0 ]; then
-                            result+="${GREEN}$assignmentname: OK${DEFAULT}"
-                            echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
+                            result+="${GREEN}$assignment_name: OK${DEFAULT}"
+                            echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignment_name/${DEFAULT}$file_name"
                         else
-                            result+="${RED}$assignmentname: KO${DEFAULT}"
-                            echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
+                            result+="${RED}$assignment_name: KO${DEFAULT}"
+                            echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${GREY} $assignment_name/${DEFAULT}$file_name"
                         fi
                         if [ $break_score = 0 ]; then
                             marks=$((marks+1))
@@ -92,18 +92,18 @@ main()
                         ((index++))
                         space
                     else
-                        echo -e "${RED}    $assignmentname does not exist.${DEFAULT}"
+                        echo -e "${RED}    $assignment_name does not exist.${DEFAULT}"
                     fi
                 else
                     break_score=1
                     checks=$((checks+1))
                     echo -e "${RED}    $file_name cannot compile.${DEFAULT}"
-                    echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${GREY} $assignmentname/${DEFAULT}$file_name"
+                    echo -e "${BG_RED}${BOLD} FAIL ${DEFAULT}${GREY} $assignment_name/${DEFAULT}$file_name"
                     space
                     if [ $index -gt 0 ]; then
                             result+=", "
                         fi
-                    result+="${RED}$assignmentname: KO${DEFAULT}"
+                    result+="${RED}$assignment_name: KO${DEFAULT}"
                 fi
             done
             break

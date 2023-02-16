@@ -10,13 +10,36 @@ This is now day 11 of piscine. I have wasted so many hours getting evaluated, do
 
 42 is basically trademarked and I probably don't want to get sued.
 
+## Disclaimer
+
+41 Test doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
+
 ## Installation
 
 1. Clone the repo
 
-## Documentation
+## Get Started
 
-To run:
+### Dependencies
+
+To run, you are required to install these dependencies:
+
+1. jq
+
+Ubuntu/Debian:
+
+```bash
+sudo apt-get update
+sudo apt-get install jq
+```
+
+macOS/Homebrew:
+
+```bash
+brew install jq
+```
+
+### Running
 
 1. Put the `41test` directory in your assignment directory, where you store your ex00, ex01... directories.
 2. Change directory to inside the `41test` directory.
