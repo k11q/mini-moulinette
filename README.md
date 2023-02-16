@@ -1,23 +1,25 @@
-This is a test suite for 42.
+# 41 Test
 
-##Installation
+This is a test suite for 42 assignments, providing automated tests for checking before submitting your assignments.
+
+## Installation
 
 1. Clone the repo
 
-##Docs
+## Documentation
 
 To run:
 
 1. Put the cloned repo in your assignment directory it.
 
-``cd 41test``
+`cd 41test`
 
-``./test.sh <Insert assignment number/>``
+`./test.sh <Insert assignment number/>`
 
 E.g.:
 
-``./test.sh C02``
+`./test.sh C02`
 
-##Authors
+## Authors
 
 [Khairul Haaziq](@khairulhaaziq)
