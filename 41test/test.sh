@@ -29,6 +29,7 @@ questions=0
 dirname_found=0
 break_score=0
 score_false=0
+available_assignments=""
 result=""
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 dirname_found=0
@@ -38,6 +39,7 @@ main()
     #print_collected_files
     for dir in ./tests/* ; do
         dirname="$(basename "$dir")"
+        available_assignments+="$dirname "
         if [ -d "$dir" ] && [ "$dirname" == "$1" ]; then
             dirname_found=1
             print_header
@@ -113,6 +115,7 @@ main()
     done
     if [ $dirname_found = 0 ]; then
         echo -e "${RED}Sorry. Tests for $1 isn't available yet. Consider contributing at Github.${DEFAULT}"
+        echo -e "Available assignment tests: ${PURPLE}$available_assignments${DEFAULT}"
         exit 1
     fi
     echo -e "${PURPLE}-----------------------------------${DEFAULT}"
