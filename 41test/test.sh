@@ -25,13 +25,13 @@ dirname_found=0
 
 main()
 {
-    print_header
-    echo "Generating test for ${1}..."
-    space
     #print_collected_files
     for dir in ./tests/* ; do
         dirname="$(basename "$dir")"
         if [ -d "$dir" ] && [ "$dirname" == "$1" ]; then
+            print_header
+            echo "Generating test for ${1}..."
+            space
             dirname_found=1
             index=0
             for assignment in $dir/*; do
@@ -59,10 +59,14 @@ main()
                     fi
                     ((index++))
                     RESULT+="$assignmentname: OK"
-                    echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} ex00/${DEFAULT}ft_strcpy.c"
+                    echo -e "${BG_GREEN}${BLACK}${BOLD} PASS ${DEFAULT}${GREY} $assignmentname/${DEFAULT}ft_strcpy.c"
                     space
                 fi
             done
+            break
+        else
+            echo -e "${RED}Sorry. Tests for $1 isn't available yet. Consider contributing at Github.${DEFAULT}"
+            exit 1
         fi
     done
     echo -e "${PURPLE}-----------------------------------${DEFAULT}"
