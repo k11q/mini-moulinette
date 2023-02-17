@@ -18,21 +18,39 @@ Not Moulinette doesn't check if there's extra files or norm, you need to do it m
 
 ### Dependencies
 
-To run, you are required to install these dependencies:
-
-1. jq
-
-Ubuntu/Debian:
-
-```bash
-sudo apt-get update
-sudo apt-get install jq
-```
+To run, you are required to install these jq:
 
 macOS/Homebrew:
 
 ```bash
 brew install jq
+```
+
+42 VM:
+
+1. Download the jq-osx-amd64 binary: https://github.com/stedolan/jq/releases.
+2. Move the jq binary to a directory in your $PATH, such as $HOME/bin:
+
+```bash
+mkdir -p $HOME/bin
+mv jq-linux64-<version>/jq $HOME/bin/jq
+```
+
+3.Make the jq binary executable:
+
+```bash
+chmod +x $HOME/bin/jq
+```
+4. Add $HOME/bin to your $PATH:
+
+```bash
+export PATH=$HOME/bin:$PATH
+```
+
+5. Done! You can check the jq version by running:
+
+```bash
+jq --version
 ```
 
 ### Running
