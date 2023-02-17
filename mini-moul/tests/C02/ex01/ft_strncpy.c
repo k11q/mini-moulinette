@@ -2,12 +2,7 @@
 #include <stdlib.h> 
 #include <string.h>
 #include "../../../../ex01/ft_strncpy.c"
-
-#define GREEN "\033[38;5;84m"
-#define RED "\033[31m"
-#define GREY "\033[38;5;8m"
-#define DEFAULT "\033[0m"
-#define CHECKMARK "\xE2\x9C\x93"
+#include "../../../utils/constants.h"
 
 int	test1(void)
 {

@@ -3,12 +3,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include "../../../../ex11/ft_putstr_non_printable.c"
-
-#define GREEN "\033[38;5;84m"
-#define RED "\033[31m"
-#define GREY "\033[38;5;8m"
-#define DEFAULT "\033[0m"
-#define CHECKMARK "\xE2\x9C\x93"
+#include "../../../utils/constants.h"
 
 int test1(void)
 {
