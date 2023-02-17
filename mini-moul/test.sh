@@ -33,7 +33,7 @@ main()
         if [ -d "$dir" ] && [ "$dirname" == "$1" ]; then
             dirname_found=1
             print_header
-            printf " Generating test for ${1}...\n"
+            printf "${GREEN} Generating test for ${1}...\n${DEFAULT}"
             space
             dirname_found=1
             index=0
