@@ -26,6 +26,25 @@ E.g.:
 ./simula.sh C02
 ```
 
+## Status
+
+| Assignment            | Coverage                   | Accuracy         |
+| :-------------------- | :------------------------: | :--------------: |
+| C00                   | 100%                       | 99%              |
+| C01                   | 100%                       | 99%              |
+| C02                   | 90%                        | 99%              |
+| C03                   | 90%                        | 99%              |
+| C04                   | 60%                        | 99%              |
+| C05                   | 0%                         | Not yet rated    |
+| C06                   | 0%                         | Not yet rated    |
+| C07                   | 0%                         | Not yet rated    |
+| C08                   | 0%                         | Not yet rated    |
+| C09                   | 0%                         | Not yet rated    |
+| C10                   | 0%                         | Not yet rated    |
+| C11                   | 0%                         | Not yet rated    |
+| C12                   | 0%                         | Not yet rated    |
+| C13                   | 0%                         | Not yet rated    |
+
 ## Alias
 
 To enhance your experience, create an alias:
