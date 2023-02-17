@@ -1,7 +1,5 @@
 source simula/config.sh
 
-echo "alias simula1='./simula.sh'" >> ~/.bash_profile
-
 cd simula
 
 if [[ "$#" -eq 1 ]]; then
