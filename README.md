@@ -30,20 +30,20 @@ E.g.:
 
 | Assignment            | Coverage                   | Accuracy         |
 | :-------------------- | :------------------------: | :--------------: |
-| C00                   | 100%                       | 99%              |
-| C01                   | 100%                       | 99%              |
-| C02                   | 90%                        | 99%              |
-| C03                   | 90%                        | 99%              |
-| C04                   | 60%                        | 99%              |
-| C05                   | 0%                         | Not yet rated    |
-| C06                   | 0%                         | Not yet rated    |
-| C07                   | 0%                         | Not yet rated    |
-| C08                   | 0%                         | Not yet rated    |
-| C09                   | 0%                         | Not yet rated    |
-| C10                   | 0%                         | Not yet rated    |
-| C11                   | 0%                         | Not yet rated    |
-| C12                   | 0%                         | Not yet rated    |
-| C13                   | 0%                         | Not yet rated    |
+| C00                   | 9/9                        | Not yet rated    |
+| C01                   | 9/9                        | Not yet rated    |
+| C02                   | 12/13                      | Not yet rated    |
+| C03                   | 6/6                        | Not yet rated    |
+| C04                   | 4/6                        | Not yet rated    |
+| C05                   | 8/10                       | Not yet rated    |
+| C06                   | 0/                         | Not yet rated    |
+| C07                   | 0/                         | Not yet rated    |
+| C08                   | 0/                         | Not yet rated    |
+| C09                   | 0/                         | Not yet rated    |
+| C10                   | 0/                         | Not yet rated    |
+| C11                   | 0/                         | Not yet rated    |
+| C12                   | 0/                         | Not yet rated    |
+| C13                   | 0/                         | Not yet rated    |
 
 ## Alias
 
