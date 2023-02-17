@@ -189,7 +189,9 @@ if [ "${1}" = "" ]; then
     exit 1
 fi
 if [ "${1}" = "C00" -o "${1}" = "C01" -o "${1}" = "C02" -o "${1}" = "C03" -o "${1}" = "C04" -o "${1}" = "C05" -o "${1}" = "C06" -o "${1}" = "C07" -o "${1}" = "C08" -o "${1}" = "C09" -o "${1}" = "C10" -o "${1}" = "C11" -o "${1}" = "C12" -o "${1}" = "C13" ]; then
-    main "$@"; exit
+    main "$@"
+    printf "$DEFAULT"
+    exit
 else
     printf "${RED}Invalid argument. Please select between C00 to C13${DEFAULT}\n"
 fi
