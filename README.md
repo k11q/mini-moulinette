@@ -10,30 +10,26 @@ This is now day 11 of piscine. I have wasted so many hours getting evaluated, do
 
 Not Moulinette doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
 
-## Installation
-
-1. Clone the repo
-
 ## Get Started
 
 ### Dependencies
 
 To run, you are required to install these jq:
 
-macOS/Homebrew:
+#### macOS/Homebrew:
 
 ```bash
 brew install jq
 ```
 
-42 VM:
+#### 42 School VM:
 
 1. Download the jq-osx-amd64 binary: https://github.com/stedolan/jq/releases.
 2. Move the jq binary to a directory in your $PATH, such as $HOME/bin:
 
 ```bash
 mkdir -p $HOME/bin
-mv jq-linux64-<version>/jq $HOME/bin/jq
+mv jq-osx-amd64/jq $HOME/bin/jq
 ```
 
 3. Make the jq binary executable:
@@ -53,19 +49,20 @@ export PATH=$HOME/bin:$PATH
 jq --version
 ```
 
-### Running
+### Get Started
 
-1. Put the `nm` directory in your assignment directory, where you store your ex00, ex01... directories.
-2. Change directory to inside the `nm` directory.
+1. Clone the repo
+2. Put the `nm` directory in your assignment directory, where you store your ex00, ex01... directories.
+3. Change directory to inside the `nm` directory.
 
 ```bash
-cd 41test
+cd nm
 ```
 
 3. Run the `test.sh` from inside.
 
 ```bash
-./test.sh <Insert assignment number/>
+./test.sh {Assignment number}
 ```
 
 E.g.:
