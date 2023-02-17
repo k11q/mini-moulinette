@@ -36,7 +36,7 @@ mkdir -p $HOME/bin
 mv jq-linux64-<version>/jq $HOME/bin/jq
 ```
 
-3.Make the jq binary executable:
+3. Make the jq binary executable:
 
 ```bash
 chmod +x $HOME/bin/jq
