@@ -74,7 +74,6 @@ main()
                             fi
                         done
                         print_test_result
-                        ((index++))
                         space
                     else
                         printf "${RED}    $assignment_name does not exist.${DEFAULT}\n"
@@ -91,6 +90,7 @@ main()
                     fi
                     result+="${RED}$assignment_name: KO${DEFAULT}"
                 fi
+                ((index++))
             done
             break
         fi
