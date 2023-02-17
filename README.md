@@ -35,15 +35,15 @@ E.g.:
 | C02                   | 12/13                      | Not yet rated    |
 | C03                   | 6/6                        | Not yet rated    |
 | C04                   | 4/6                        | Not yet rated    |
-| C05                   | 8/10                       | Not yet rated    |
-| C06                   | 0/                         | Not yet rated    |
-| C07                   | 0/                         | Not yet rated    |
-| C08                   | 0/                         | Not yet rated    |
-| C09                   | 0/                         | Not yet rated    |
-| C10                   | 0/                         | Not yet rated    |
-| C11                   | 0/                         | Not yet rated    |
-| C12                   | 0/                         | Not yet rated    |
-| C13                   | 0/                         | Not yet rated    |
+| C05                   | 8/9                        | Not yet rated    |
+| C06                   | 0/4                        | Not yet rated    |
+| C07                   | 0/6                        | Not yet rated    |
+| C08                   | 0/6                        | Not yet rated    |
+| C09                   | 0/3                        | Not yet rated    |
+| C10                   | 0/4                        | Not yet rated    |
+| C11                   | 0/8                        | Not yet rated    |
+| C12                   | 0/18                       | Not yet rated    |
+| C13                   | 0/8                        | Not yet rated    |
 
 ## Alias
 
