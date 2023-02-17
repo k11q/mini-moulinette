@@ -29,15 +29,15 @@ main()
     for dir in ./tests/* ; do
         dirname="$(basename "$dir")"
         available_assignments+="$dirname "
-
+        
         if [ -d "$dir" ] && [ "$dirname" == "$1" ]; then
             dirname_found=1
             print_header
-            printf "Generating test for ${1}...\n"
+            printf " Generating test for ${1}...\n"
             space
             dirname_found=1
             index=0
-
+            
             for assignment in $dir/*; do
                 questions=$((questions+1))
                 score_false=0
@@ -46,22 +46,22 @@ main()
                 test_name="$(ls $assignment/*.c | head -n 1)"
                 test_name="$(basename "$test_name")"
                 #assignment_data=$(echo "$DATA" | jq -r ".$dirname[] | select(.exercise == \"$assignment_name\")")
-
+                
                 if cc -o test1 $(ls $assignment/*.c | head -n 1) 2> /dev/null; then
                     rm test1
                     checks=$((checks+1))
                     passed=$((passed+1))
-
+                    
                     if [ -d "$assignment" ]; then
                         index2=0
-
+                        
                         for test in $assignment/*.c; do
                             ((index2++))
                             checks=$((checks+1))
                             #set_test_data
-
+                            
                             if cc -o ${test%.c} $test 2> /dev/null; then
-
+                                
                                 if ./${test%.c} = 0; then
                                     passed=$((passed+1))
                                 else
@@ -85,9 +85,9 @@ main()
                     printf "${RED}    $test_name cannot compile.${DEFAULT}\n"
                     printf "${BG_RED}${BOLD} FAIL ${DEFAULT}${PURPLE} $assignment_name/${DEFAULT}$test_name\n"
                     space
-
+                    
                     if [ $index -gt 0 ]; then
-                            result+=", "
+                        result+=", "
                     fi
                     result+="${RED}$assignment_name: KO${DEFAULT}"
                 fi
@@ -107,15 +107,17 @@ main()
 print_header()
 {
     printf "${BLUE}"
-    printf "+================================+\n"
-    printf "|   __ __ ___   __            __ |\n"
-    printf "|  / // //  / _/ /____  _____/ /_|\n"
-    printf "| / // /_/ //_  __/ _ \/ ___/ __/|\n"
-    printf "|/__  __/ /  / /_/  __(__  ) /_  |\n"
-    printf "|  /_/ /_/   \__/\___/____/\__/  |\n"
-    printf "|                        41 TESTS|\n"
-    printf "+================================+\n"
+    space
+    printf "  )\.--.  .'(   )\   )\       .-.   .')        /\`-.   \n"
+    printf " (   ._.' \  ) (  ',/ /   ,'  /  ) ( /       ,' _  \  \n"
+    printf "  \`-.\`.   ) (   )    (   (  ) | (   ))      (  '-' (  \n"
+    printf " ,_ (  \  \  ) (  \(\ \   ) '._\ )  )'._.-.  )   _  ) \n"
+    printf "(  '.)  )  ) \  \`.) /  ) (  ,   (  (       )(  ,' ) \ \n"
+    printf " '._,_.'    )/      '.(   )/ ._.'   )/,__.'  )/    )/ \n"
+    printf "                                                       \n"
     printf "${DEFAULT}"
+    printf "${PINK}Simula ${DEFAULT}version 0.1.0. 2023.\n"
+    space
 }
 
 print_collected_files()
