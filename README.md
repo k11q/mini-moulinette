@@ -68,3 +68,7 @@ simula {assignment number}
 ## Authors
 
 [Khairul Haaziq](@khairulhaaziq)
+
+## License
+
+MIT. Copyright Khairul Haaziq 2023.
