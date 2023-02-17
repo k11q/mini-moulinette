@@ -1,6 +1,6 @@
 #constants
 readonly GREEN='\033[38;5;84m'
-readonly RED='\033[31m'
+readonly RED='\033[38;5;197m'
 readonly BLUE='\033[38;5;45m'
 readonly PURPLE='\033[38;5;63m'
 readonly PINK='\033[38;5;207m'

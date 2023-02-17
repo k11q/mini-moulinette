@@ -106,17 +106,19 @@ main()
 
 print_header()
 {
-    printf "${BLUE}"
+    printf "${PINK}"
     space
-    printf "  )\.--.  .'(   )\   )\       .-.   .')        /\`-.   \n"
-    printf " (   ._.' \  ) (  ',/ /   ,'  /  ) ( /       ,' _  \  \n"
-    printf "  \`-.\`.   ) (   )    (   (  ) | (   ))      (  '-' (  \n"
-    printf " ,_ (  \  \  ) (  \(\ \   ) '._\ )  )'._.-.  )   _  ) \n"
-    printf "(  '.)  )  ) \  \`.) /  ) (  ,   (  (       )(  ,' ) \ \n"
-    printf " '._,_.'    )/      '.(   )/ ._.'   )/,__.'  )/    )/ \n"
-    printf "                                                       \n"
+    printf " ███▄ ▄███▓ ██▓ ███▄    █  ██▓\n"
+    printf "▓██▒▀█▀ ██▒▓██▒ ██ ▀█   █ ▓██▒\n"
+    printf "▓██    ▓██░▒██▒▓██  ▀█ ██▒▒██▒\n"
+    printf "▒██    ▒██ ░██░▓██▒  ▐▌██▒░██░\n"
+    printf "▒██▒   ░██▒░██░▒██░   ▓██░░██░\n"
+    printf "░ ▒░   ░  ░░▓  ░ ▒░   ▒ ▒ ░▓  \n"
+    printf "░  ░      ░ ▒ ░░ ░░   ░ ▒░ ▒ ░\n"
+    printf "░      ░    ▒ ░   ░   ░ ░  ▒ ░\n"
+    printf "       ░    ░           ░  ░  \n"
     printf "${DEFAULT}"
-    printf "${PINK}Simula ${DEFAULT}version 0.1.0. 2023.\n"
+    printf "${BLUE}Mini moulinette ${DEFAULT}version 0.1.0. 2023.\n"
     space
 }
 
