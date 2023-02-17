@@ -1,6 +1,6 @@
-# Simula
+# Mini-moulinette
 
-Simula is a test runner for 42 assignments, providing automated tests for whole assignment with one command. The goal is to make thorough checking before submitting the assignments, with ease.
+Mini-moulinette is a test runner for 42 assignments, providing automated tests for whole assignment with one command. The goal is to make thorough checking before submitting the assignments, with ease.
 
 ## Introduction
 
@@ -8,22 +8,22 @@ This is now day 11 of piscine. I have wasted so many hours getting evaluated, do
 
 ## Disclaimer
 
-Simula doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
+Mini-moulinette doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
 
 ## Get Started
 
 1. Clone the repo
-2. Put the `simula` directory `simula.sh` in your assignment directory, where you store your ex00, ex01... directories.
-3. Run `./simula.sh` with assignment number as argument. e.g: C02.
+2. Put the `mini-moul` directory and `mini-moul.sh` in your assignment directory, where you store your ex00, ex01... directories.
+3. Run `./mini-moul.sh` with assignment number as argument. e.g: C02.
 
 ```bash
-./simula.sh {assignment number}
+./mini-moul.sh {assignment number}
 ```
 
 E.g.:
 
 ```bash
-./simula.sh C02
+./mini-moul.sh C02
 ```
 
 ## Status
@@ -50,13 +50,19 @@ E.g.:
 To enhance your experience, create an alias:
 
 ```bash
-alias simula='./simula.sh'
+alias moul='./mini-moul.sh'
 ```
 
 Now you can run with just:
 
 ```bash
-simula {assignment number}
+moul {assignment number}
+```
+
+For example:
+
+```bash
+moul C02
 ```
 
 ## Contributing
