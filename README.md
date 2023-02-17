@@ -1,6 +1,6 @@
 # Simula
 
-Simula is a test suite for 42 assignments, providing automated tests for checking before submitting your assignments, simulating moulinette.
+Simula is a test runner for 42 assignments, providing automated tests for whole assignment with one command. The goal is to make thorough checking before submitting the assignments, with ease.
 
 ## Introduction
 
