@@ -42,10 +42,8 @@ main()
                 questions=$((questions+1))
                 score_false=0
                 assignment_name="$(basename "$assignment")"
-                #file_name=$(echo "$DATA" | jq -r ".$dirname[] | select(.exercise == \"$assignment_name\").file")
                 test_name="$(ls $assignment/*.c | head -n 1)"
                 test_name="$(basename "$test_name")"
-                #assignment_data=$(echo "$DATA" | jq -r ".$dirname[] | select(.exercise == \"$assignment_name\")")
                 
                 if cc -Wall -Werror -Wextra -o test1 $(ls $assignment/*.c | head -n 1) 2> /dev/null; then
                     rm test1
@@ -58,7 +56,6 @@ main()
                         for test in $assignment/*.c; do
                             ((index2++))
                             checks=$((checks+1))
-                            #set_test_data
                             
                             if cc -o ${test%.c} $test 2> /dev/null; then
                                 
@@ -167,13 +164,6 @@ print_footer()
     printf "${GREY}Test completed.\n"
     space
 }
-
-#set_test_data()
-# {
-#    test_data=$(echo "$assignment_data" | jq '.tests[] | select(.name == "'"$test_name"'")')
-#    test_error=$(echo "$test_data" | jq -r '.error')
-#}
-
 
 check_dependency()
 {
