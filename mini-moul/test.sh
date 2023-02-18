@@ -47,7 +47,7 @@ main()
                 test_name="$(basename "$test_name")"
                 #assignment_data=$(echo "$DATA" | jq -r ".$dirname[] | select(.exercise == \"$assignment_name\")")
                 
-                if cc -o test1 $(ls $assignment/*.c | head -n 1) 2> /dev/null; then
+                if cc -Wall -Werror -Wextra -o test1 $(ls $assignment/*.c | head -n 1) 2> /dev/null; then
                     rm test1
                     checks=$((checks+1))
                     passed=$((passed+1))
