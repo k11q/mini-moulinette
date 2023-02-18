@@ -5,13 +5,9 @@
 #include "../../../../ex04/ft_putnbr_base.c"
 #include "../../../utils/constants.h"
 
-void redirect_output(void);
 int test1(void);
-void redirect_output2(void);
 int test2(void);
-void redirect_output3(void);
 int test3(void);
-void redirect_output4(void);
 int test4(void);
 
 int main(void)
@@ -22,28 +18,6 @@ int main(void)
 }
 
 int test1(void)
-{
-        redirect_output();
-        // Open the output file and check its contents
-        FILE *fp = fopen("output.txt", "r");
-        char buffer[80024];
-        fgets(buffer, sizeof(buffer), fp);
-        fclose(fp);
-
-        // Check that the output matches the expected value
-        const char *expected_output = "-1100";
-            if (strcmp(buffer, expected_output) != 0)
-        {
-                printf("    " RED "[1] Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
-                remove("output.txt");
-                return (-1);
-        }
-        else printf("  " GREEN CHECKMARK GREY " [1] Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
-        remove("output.txt");
-        return (0);
-}
-
-void redirect_output(void)
 {
         // Redirect the output to a file
         int saved_stdout = dup(STDOUT_FILENO);
@@ -58,11 +32,6 @@ void redirect_output(void)
         fflush(stdout);
         dup2(saved_stdout, STDOUT_FILENO);
         close(saved_stdout);
-}
-
-int test2(void)
-{
-        redirect_output2();
         // Open the output file and check its contents
         FILE *fp = fopen("output.txt", "r");
         char buffer[80024];
@@ -70,19 +39,19 @@ int test2(void)
         fclose(fp);
 
         // Check that the output matches the expected value
-        const char *expected_output = "vp\0";
-            if (strncmp(buffer, expected_output, 2) != 0)
+        const char *expected_output = "-1100";
+            if (strcmp(buffer, expected_output) != 0)
         {
-                printf("    " RED "[2] Expected \"%s\", got \"%s\"\n", expected_output, buffer);
+                printf("    " RED "[1] ft_putnbr_base(-12, \"01\") Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
-        else printf("  " GREEN CHECKMARK GREY " [2] Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+        else printf("  " GREEN CHECKMARK GREY " [1] ft_putnbr_base(-12, \"01\") Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
 }
 
-void redirect_output2(void)
+int test2(void)
 {
         // Redirect the output to a file
         int saved_stdout = dup(STDOUT_FILENO);
@@ -97,11 +66,6 @@ void redirect_output2(void)
         fflush(stdout);
         dup2(saved_stdout, STDOUT_FILENO);
         close(saved_stdout);
-}
-
-int test3(void)
-{
-        redirect_output3();
         // Open the output file and check its contents
         FILE *fp = fopen("output.txt", "r");
         char buffer[80024];
@@ -109,19 +73,19 @@ int test3(void)
         fclose(fp);
 
         // Check that the output matches the expected value
-        const char *expected_output = "894867";
-            if (strncmp(buffer, expected_output, 6) != 0)
+        const char *expected_output = "vp\0";
+            if (strncmp(buffer, expected_output, 2) != 0)
         {
-                printf("    " RED "[3] Expected \"%s\", got \"%s\"\n", expected_output, buffer);
+                printf("    " RED "[2] ft_putnbr_base(40, \"poneyvif\") Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
-        else printf("  " GREEN CHECKMARK GREY " [3] Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+        else printf("  " GREEN CHECKMARK GREY " [2] ft_putnbr_base(40, \"poneyvif\") Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
 }
 
-void redirect_output3(void)
+int test3(void)
 {
         // Redirect the output to a file
         int saved_stdout = dup(STDOUT_FILENO);
@@ -136,11 +100,6 @@ void redirect_output3(void)
         fflush(stdout);
         dup2(saved_stdout, STDOUT_FILENO);
         close(saved_stdout);
-}
-
-int test4(void)
-{
-        redirect_output4();
         // Open the output file and check its contents
         FILE *fp = fopen("output.txt", "r");
         char buffer[80024];
@@ -148,19 +107,19 @@ int test4(void)
         fclose(fp);
 
         // Check that the output matches the expected value
-        const char *expected_output = "35";
-            if (strncmp(buffer, expected_output, 2) != 0)
+        const char *expected_output = "894867";
+            if (strncmp(buffer, expected_output, 6) != 0)
         {
-                printf("    " RED "[1] Expected \"%s\", got \"%s\"\n", expected_output, buffer);
+                printf("    " RED "[3] ft_putnbr_base(894867, \"0123456789\") Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
-        else printf("  " GREEN CHECKMARK GREY " [1] ft_putnbr(-2147483648) output \"%s\"\n" DEFAULT, buffer);
+        else printf("  " GREEN CHECKMARK GREY " [3] ft_putnbr_base(894867, \"0123456789\") Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
 }
 
-void redirect_output4(void)
+int test4(void)
 {
         // Redirect the output to a file
         int saved_stdout = dup(STDOUT_FILENO);
@@ -175,4 +134,21 @@ void redirect_output4(void)
         fflush(stdout);
         dup2(saved_stdout, STDOUT_FILENO);
         close(saved_stdout);
+        // Open the output file and check its contents
+        FILE *fp = fopen("output.txt", "r");
+        char buffer[80024];
+        fgets(buffer, sizeof(buffer), fp);
+        fclose(fp);
+
+        // Check that the output matches the expected value
+        const char *expected_output = "35";
+            if (strncmp(buffer, expected_output, 2) != 0)
+        {
+                printf("    " RED "[4] ft_putnbr_base(53, \"0123456789abcdef\") Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+                remove("output.txt");
+                return (-1);
+        }
+        else printf("  " GREEN CHECKMARK GREY " [4] ft_putnbr_base(53, \"0123456789abcdef\") Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+        remove("output.txt");
+        return (0);
 }

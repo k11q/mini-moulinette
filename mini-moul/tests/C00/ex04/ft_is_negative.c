@@ -77,12 +77,12 @@ int test2(void)
         const char *expected_output = "N";
         if (strncmp(buffer, expected_output, 1) != 0)
         {
-                printf("    " RED "[1] ft_is_negative(8) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+                printf("    " RED "[2] ft_is_negative(8) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
         else
-                printf("  " GREEN CHECKMARK GREY " [1] ft_is_negative(8) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+                printf("  " GREEN CHECKMARK GREY " [2] ft_is_negative(8) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
 }
@@ -112,12 +112,12 @@ int test3(void)
         const char *expected_output = "N";
         if (strncmp(buffer, expected_output, 1) != 0)
         {
-                printf("    " RED "[1] ft_is_negative(-2147483648) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+                printf("    " RED "[3] ft_is_negative(-2147483648) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
         else
-                printf("  " GREEN CHECKMARK GREY " [1] ft_is_negative(-2147483648) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+                printf("  " GREEN CHECKMARK GREY " [3] ft_is_negative(-2147483648) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
 }

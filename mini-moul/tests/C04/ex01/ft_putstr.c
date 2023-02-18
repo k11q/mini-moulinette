@@ -5,8 +5,6 @@
 #include "../../../../ex01/ft_putstr.c"
 #include "../../../utils/constants.h"
 
-void print_success(char *str, int num);
-void print_error(char *str, int num);
 int test1(void);
 
 int main(void)
@@ -42,22 +40,12 @@ int test1(void)
         const char *expected_output = "hallo world";
         if (strcmp(buffer, expected_output) != 0)
         {
-                printf("    " RED "[1] Expected \"%s\", got \"%s\"\n", expected_output, buffer);
+                printf("    " RED "[1] ft_putstr(\"hallo world\") Expected \"%s\", got \"%s\"\n", expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
         else
-                printf("  " GREEN CHECKMARK GREY " [1] ft_putstr() output \"%s\"\n" DEFAULT, buffer);
+                printf("  " GREEN CHECKMARK GREY " [1] ft_putstr(\"hallo world\") Expected \"%s\", got \"%s\"\n" DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
-}
-
-void print_success(char *str, int num)
-{
-        printf("  " GREEN CHECKMARK GREY " [%d] %s\n" DEFAULT, num, str);
-}
-
-void print_error(char *str, int num)
-{
-        printf("    " RED "[%d] %s\n" DEFAULT, num, str);
 }
