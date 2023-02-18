@@ -85,7 +85,7 @@ mini C03
 | C03                   | 6/6                        | 99%              |
 | C04                   | 6/6                        | 99%              |
 | C05                   | 8/9                        | 99%              |
-| C06                   | 4/4                        | Not yet rated    |
+| C06                   | 4/4                        | 99%              |
 | C07                   | 0/6                        | Not yet rated    |
 | C08                   | 0/6                        | Not yet rated    |
 | C09                   | 0/3                        | Not yet rated    |
