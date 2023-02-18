@@ -42,12 +42,12 @@ int test1(void)
         const char *expected_output = "abcdefghijklmnopqrstuvwxyz";
         if (strcmp(buffer, expected_output) != 0)
         {
-                printf("    " RED "[1] Expected \"abcdefghijklmnopqrstuvwxyz\", got \"%s\"\n", buffer);
+                printf("    " RED "[1] ft_print_alphabet() Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
         else
-                printf("  " GREEN CHECKMARK GREY " [1] ft_print_alphabet() output \"abcdefghijklmnopqrstuvwxyz\"\n" DEFAULT);
+                printf("  " GREEN CHECKMARK GREY " [1] ft_print_alphabet() Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
 }

@@ -31,12 +31,12 @@ int test1(void)
         const char *expected_output = "P";
         if (strcmp(buffer, expected_output) != 0)
         {
-                printf("    " RED "[1] Expected \"%s\", got \"%s\"\n", expected_output, buffer);
+                printf("    " RED "[1] ft_is_negative(8) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
         else
-                printf("  " GREEN CHECKMARK GREY " [1] ft_is_negative('8') output \"%s\"\n" DEFAULT, buffer);
+                printf("  " GREEN CHECKMARK GREY " [1] ft_is_negative(8) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
 }

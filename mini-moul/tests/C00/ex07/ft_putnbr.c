@@ -5,8 +5,6 @@
 #include "../../../../ex07/ft_putnbr.c"
 #include "../../../utils/constants.h"
 
-void print_success(char *str, int num);
-void print_error(char *str, int num);
 void redirect_output(void);
 int test1(void);
 
@@ -30,11 +28,11 @@ int test1(void)
         const char *expected_output = "-2147483648";
             if (strcmp(buffer, expected_output) != 0)
         {
-                printf("    " RED "[1] Expected \"%s\", got \"%s\"\n", expected_output, buffer);
+                printf("    " RED "[1] ft_putnbr(-2147483648) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
                 remove("output.txt");
                 return (-1);
         }
-        else printf("  " GREEN CHECKMARK GREY " [1] ft_putnbr(-2147483648) output \"%s\"\n" DEFAULT, buffer);
+        else printf("  " GREEN CHECKMARK GREY " [1] ft_putnbr(-2147483648) Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
         remove("output.txt");
         return (0);
 }
@@ -54,14 +52,4 @@ void redirect_output(void)
         fflush(stdout);
         dup2(saved_stdout, STDOUT_FILENO);
         close(saved_stdout);
-}
-
-void print_success(char *str, int num)
-{
-        printf("  " GREEN CHECKMARK GREY " [%d] %s\n" DEFAULT, num, str);
-}
-
-void print_error(char *str, int num)
-{
-        printf("    " RED "[%d] %s\n" DEFAULT, num, str);
 }
