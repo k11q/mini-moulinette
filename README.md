@@ -10,10 +10,6 @@ Mini-moulinette is a test runner for 42 assignments, providing automated tests f
 This is now day 11 of piscine. I have wasted so many hours getting evaluated, doing evaluation, waiting for evaluation, only to come back redoing it again because I kept making silly mistakes. I wish I can check my code thoroughly before submitting, but that too, will take a lot of my time. This is why I build this so I can stop wasting my time and many others, and shut moulinette up with just a single submission.
 
 
-## Disclaimer
-
-Mini-moulinette doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
-
 ## How Does It Work?
 
 ![screenshot](screenshot.jpg)
@@ -21,6 +17,10 @@ Mini-moulinette doesn't check if there's extra files or norm, you need to do it 
 - Mini moulinette runs through all the tests cases automatically, and checks if the test cases are met.
 - It will then output the result.
 - The scores are based on 42's practice, where if easier/earlier questions are incorrect, the rest won't count.
+
+> ***Note***
+> Mini-moulinette doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
+
 
 ## Get Started
 
