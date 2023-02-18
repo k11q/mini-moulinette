@@ -43,12 +43,12 @@ int test1()
   {
     if (strcmp(buf, args[i]) != 0)
     {
-      printf("    " RED "[%d] %s Expected \"%s\", got \"%s\"\n" DEFAULT, i, program_name, modify_string(args[i]), modify_string(buf));
+      printf("    " RED "[%d] %s Expected \"%s\", got \"%s\"\n" DEFAULT, i, run_command, modify_string(args[i]), modify_string(buf));
       result = -1;
     }
     else
     {
-      printf("  " GREEN CHECKMARK GREY " [%d] %s Expected \"%s\", got \"%s\"\n" DEFAULT, i, program_name, modify_string(args[i]), modify_string(buf));
+      printf("  " GREEN CHECKMARK GREY " [%d] %s Expected \"%s\", got \"%s\"\n" DEFAULT, i, run_command, modify_string(args[i]), modify_string(buf));
       result = 0;
     }
     i++;
