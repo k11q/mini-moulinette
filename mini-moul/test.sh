@@ -1,6 +1,6 @@
 source config.sh
 
-readonly DATA=$(cat data.json)
+#readonly DATA=$(cat data.json)
 
 #utils
 index=0
