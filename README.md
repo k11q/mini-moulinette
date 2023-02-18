@@ -32,7 +32,7 @@ git clone https://github.com/khairulhaaziq/mini-moulinette.git
 3. Now create an alias for it.
 
 ```bash
-alias moul='~/mini-moulinette/mini-moul.sh'
+alias mini='~/mini-moulinette/mini-moul.sh'
 ```
 
 > **Note**
@@ -42,13 +42,13 @@ alias moul='~/mini-moulinette/mini-moul.sh'
 3. Run `./mini-moul.sh` with assignment number as argument. e.g: C02.
 
 ```bash
-moul C02
+mini C02
 ```
 
 e.g.: C03
 
 ```bash
-moul C03
+mini C03
 ```
 
 
