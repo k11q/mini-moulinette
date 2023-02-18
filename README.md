@@ -57,7 +57,7 @@ cd C02
 mini C02
 ```
 
-e.g.: C03
+e.g: C03
 
 ```bash
 mini C03
