@@ -40,13 +40,13 @@ git clone https://github.com/khairulhaaziq/mini-moulinette.git
 
 3. Now create an alias for it.
 
-zsh:
+- zsh:
 
 ```zsh
 echo "alias mini='~/mini-moulinette/mini-moul.sh'" >> ~/.zshrc && source ~/.zshrc
 ```
 
-bash:
+- bash:
 
 ```bash
 echo "alias mini='~/mini-moulinette/mini-moul.sh'" >> ~/.bashrc && source ~/.bashrc
