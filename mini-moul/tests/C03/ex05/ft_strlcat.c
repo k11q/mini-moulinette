@@ -14,11 +14,11 @@ int test1(void)
 	
 	if (strcmp(dest, expected_output) != 0)
 	{
-		printf("    " RED "[1] ft_strlcat(\"1337 42\", \"Born to code\", 20) Expected \"%s\" output %s\n" DEFAULT, expected_output, dest);
+		printf("    " RED "[1] ft_strlcat(\"1337 42\", \"Born to code\", 20) Expected \"%s\" output \"%s\"\n" DEFAULT, expected_output, dest);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strlcat(\"1337 42\", \"Born to code\", 20) Expected \"%s\" output %s\n" DEFAULT, expected_output, dest);
+		printf("  " GREEN CHECKMARK GREY " [1] ft_strlcat(\"1337 42\", \"Born to code\", 20) Expected \"%s\" output \"%s\"\n" DEFAULT, expected_output, dest);
 	return (0);
 }
 

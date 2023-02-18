@@ -10,14 +10,14 @@ int test1(void)
 	int expected_output;
 
 	result = ft_strncmp("Hello", "HelloWorld", 8);
-	expected_output = -1;
-	if (result != expected_output)
+	expected_output = 0;
+	if (result >= expected_output)
 	{
-		printf("    " RED "[1] ft_strncmp(\"Hello\", \"HelloWorld\", 8) Expected %d, got %d\n"DEFAULT, expected_output, result);
+		printf("    " RED "[1] ft_strncmp(\"Hello\", \"HelloWorld\", 8) Expected negative number, got %d\n"DEFAULT, result);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strncmp(\"Hello\", \"HelloWorld\", 8) Expected %d, got %d\n"DEFAULT, expected_output, result);
+		printf("  " GREEN CHECKMARK GREY " [1] ft_strncmp(\"Hello\", \"HelloWorld\", 8) Expected negative number, got %d\n"DEFAULT, result);
 	return (0);
 }
 
@@ -44,14 +44,14 @@ int test3(void)
 	int expected_output;
 
 	result = ft_strncmp("Hello", "HelloWorld", 6);
-	expected_output = -1;
-	if (result != expected_output)
+	expected_output = 0;
+	if (result >= expected_output)
 	{
-		printf("    " RED "[3] ft_strncmp(\"Hello\", \"HelloWorld\", 6) Expected %d, got %d\n"DEFAULT, expected_output, result);
+		printf("    " RED "[3] ft_strncmp(\"Hello\", \"HelloWorld\", 6) Expected negative number, got %d\n"DEFAULT, result);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [3] ft_strncmp(\"Hello\", \"HelloWorld\", 6) Expected %d, got %d\n"DEFAULT, expected_output, result);
+		printf("  " GREEN CHECKMARK GREY " [3] ft_strncmp(\"Hello\", \"HelloWorld\", 6) Expected negative number, got %d\n"DEFAULT, result);
 	return (0);
 }
 
