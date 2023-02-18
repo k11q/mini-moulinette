@@ -26,6 +26,7 @@ int test1(void)
 	int *******nbr2;
 	int ********nbr1;
 	int *********nbr;
+	int expected_output;
 
 	n = 21;
 
@@ -40,13 +41,13 @@ int test1(void)
 	nbr = &nbr1;
 
 	ft_ultimate_ft(nbr);
-
-	if (n != 42)
+	expected_output = 42;
+	if (n != expected_output)
 	{
-		printf("    " RED "[1] Expected %d, got %d\n" DEFAULT, 42, n);
+		printf("    " RED "[1] ft_ultimate_ft() Expected %d, got %d\n"DEFAULT, expected_output, n);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_ultimate_ft(nbr) output %d\n" DEFAULT, n);
+		printf("  " GREEN CHECKMARK GREY " [1] ft_ultimate_ft() Expected %d, got %d\n"DEFAULT, expected_output, n);
 	return (0);
 }

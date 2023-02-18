@@ -17,13 +17,17 @@ int main(void)
 int test1(void)
 {
 	char *c = "Hello";
+	int result;
+	int expected_output;
 
-	if (ft_strlen(c) != 5)
+	result = ft_strlen(c);
+	expected_output = 5;
+	if (result != expected_output)
 	{
-		printf("    " RED "[1] Expected %d, got %d\n" DEFAULT, 5, ft_strlen(c));
+		printf("    " RED "[1] ft_strlen(\"Hello\") Expected %d, got %d\n" DEFAULT, expected_output, result);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strlen(\"Hello\") output %d\n" DEFAULT, ft_strlen(c));
+		printf("  " GREEN CHECKMARK GREY " [1] ft_strlen(\"Hello\") Expected %d, got %d\n" DEFAULT, expected_output, result);
 	return (0);
 }

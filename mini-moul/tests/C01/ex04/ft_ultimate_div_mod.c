@@ -25,10 +25,10 @@ int test1(void)
 
 	if (x != 5 || y != 0)
 	{
-		printf("    " RED "[1] Expected x = 5, got %d. Expected y = 0, got %d\n" DEFAULT, x, y);
+		printf("    " RED "[1] ft_ultimate_div_mod(x = 15, y = 3) Expected x = 3, got %d. Expected y = 2, got %d\n" DEFAULT, x, y);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_ultimate_div_mod(&15, &3) output x = 5, y = 0\n" DEFAULT);
+		printf("  " GREEN CHECKMARK GREY " [1] ft_ultimate_div_mod(x = 15, y = 3) Expected x = 3, got %d. Expected y = 2, got %d\n" DEFAULT, x, y);
 	return (0);
 }

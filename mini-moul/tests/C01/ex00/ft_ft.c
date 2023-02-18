@@ -18,16 +18,17 @@ int test1(void)
 {
 	int	*nbr;
 	int	number = 33;
+	int	expected_output;
 
 	nbr = &number;
 	ft_ft(nbr);
-
-	if (number != 42)
+	expected_output = 42;
+	if (number != expected_output)
 	{
-		printf("    " RED "[1] Expected %d, got %d\n" DEFAULT, 42, number);
+		printf("    " RED "[1] ft_ft() Expected %d, got %d\n"DEFAULT, expected_output, number);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_ft(nbr) output %d\n" DEFAULT, number);
+		printf("  " GREEN CHECKMARK GREY " [1] ft_ft() Expected %d, got %d\n"DEFAULT, expected_output, number);
 	return (0);
 }

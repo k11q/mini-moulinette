@@ -54,12 +54,12 @@ int test1(void)
 	const char *expected_output = "c";
 	if (strcmp(buffer, expected_output) != 0)
 	{
-		printf("    " RED "[1] ft_putchar(Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+		printf("    " RED "[1] ft_putchar(\'c\') Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
 		remove("output.txt");
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_putchar(\'c\') output \"c\"\n" DEFAULT);
+		printf("  " GREEN CHECKMARK GREY " ft_putchar(\'c\') Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
 	remove("output.txt");
 	return (0);
 }

@@ -25,7 +25,7 @@ int test1(void)
 
 	if (x != 3 || y != 2)
 	{
-		printf("    " RED "[1] Expected x = 3, got %d. Expected y = 2, got %d\n" DEFAULT, x, y);
+		printf("    " RED "[1] ft_swap(x = 2, y = 3) Expected x = 3, got %d. Expected y = 2, got %d\n" DEFAULT, x, y);
 		return (-1);
 	}
 	else
