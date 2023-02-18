@@ -31,15 +31,27 @@ git clone https://github.com/khairulhaaziq/mini-moulinette.git
 
 3. Now create an alias for it.
 
-```bash
-alias mini='~/mini-moulinette/mini-moul.sh'
+zsh:
+
+```zsh
+echo "alias mini='~/mini-moulinette/mini-moul.sh'" >> ~/.zshrc && source ~/.zshrc
 ```
 
-> **Note**
-> For now, the alias only works on the current terminal session, I'm figuring out how to make it permanent. Since then you need to add the alias for every terminal/session.
+bash:
+
+```bash
+echo "alias mini='~/mini-moulinette/mini-moul.sh'" >> ~/.bashrc && source ~/.bashrc
+```
 
 
-3. Run using command `mini` with assignment number as argument. e.g: C02.
+5. Go to your assignment directory where you want to test: e.g: C02 directory
+
+```bash
+cd C02
+```
+
+
+6. Run using command `mini` with assignment number as argument. e.g: C02.
 
 ```bash
 mini C02
@@ -50,6 +62,8 @@ e.g.: C03
 ```bash
 mini C03
 ```
+
+5. You can now run it for every assignment directory, where tests are provided. Have fun!
 
 
 ## Status
