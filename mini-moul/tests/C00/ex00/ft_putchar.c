@@ -54,7 +54,7 @@ int test1(void)
 	const char *expected_output = "c";
 	if (strcmp(buffer, expected_output) != 0)
 	{
-		printf("    " RED "[1] Expected \"c\", got \"%s\"\n", buffer);
+		printf("    " RED "[1] ft_putchar(Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
 		remove("output.txt");
 		return (-1);
 	}

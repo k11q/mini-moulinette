@@ -18,7 +18,7 @@ int test1(void)
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY "[1] ft_strcpy(dest[12], \"FGccjqWCcYr\") Expected \"FGccjqWCcYr\", got %s\n" DEFAULT, result);
+		printf("  " GREEN CHECKMARK GREY " [1] ft_strcpy(dest[12], \"FGccjqWCcYr\") Expected \"FGccjqWCcYr\", got %s\n" DEFAULT, result);
 	return (0);
 }
 
@@ -36,7 +36,7 @@ int test2(void)
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY "[2] ft_strcpy(dest[12], \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\") Expected \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\", got %s\n" DEFAULT, result);
+		printf("  " GREEN CHECKMARK GREY " [2] ft_strcpy(dest[12], \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\") Expected \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\", got %s\n" DEFAULT, result);
 	return (0);
 }
 
@@ -53,7 +53,7 @@ int test3(void)
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY "[3] ft_strcpy(dest[12], \"TcXF\") Expected \"TcXF\", got %s\n" DEFAULT, result);
+		printf("  " GREEN CHECKMARK GREY " [3] ft_strcpy(dest[12], \"TcXF\") Expected \"TcXF\", got %s\n" DEFAULT, result);
 	return (0);
 }
 
