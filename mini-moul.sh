@@ -8,8 +8,6 @@ function handle_sigint {
   exit 1
 }
 
-
-
 if [[ "$#" -eq 1 ]]; then
 	cp -R ~/mini-moulinette/mini-moul mini-moul
   trap handle_sigint SIGINT
