@@ -57,9 +57,9 @@ moul C03
 | Assignment            | Coverage                   | Accuracy         |
 | :-------------------- | :------------------------: | :--------------: |
 | C00                   | 9/9                        | Not yet rated    |
-| C01                   | 9/9                        | Not yet rated    |
+| C01                   | 9/9                        | 99%              |
 | C02                   | 12/13                      | 99%              |
-| C03                   | 6/6                        | Not yet rated    |
+| C03                   | 6/6                        | 99%              |
 | C04                   | 6/6                        | 99%              |
 | C05                   | 8/9                        | 99%              |
 | C06                   | 0/4                        | Not yet rated    |
