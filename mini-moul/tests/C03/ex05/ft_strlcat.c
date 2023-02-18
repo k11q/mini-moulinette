@@ -8,16 +8,17 @@ int test1(void)
 {
 	char src[] = "Born to code";
     	char dest [] = "1337 42";
+	char *expected_output = "1337 42Born to code";
 
 	ft_strlcat(dest, src, 20);
 	
-	if (strcmp(dest, "1337 42Born to code") != 0)
+	if (strcmp(dest, expected_output) != 0)
 	{
-		printf("    " RED "[1] Expected \"1337 42Born to code\" output %s\n" DEFAULT, dest);
+		printf("    " RED "[1] ft_strlcat(\"1337 42\", \"Born to code\", 20) Expected \"%s\" output %s\n" DEFAULT, expected_output, dest);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strlcat(dest, src, 20) output \"%s\"\n" DEFAULT, dest);
+		printf("  " GREEN CHECKMARK GREY " [1] ft_strlcat(\"1337 42\", \"Born to code\", 20) Expected \"%s\" output %s\n" DEFAULT, expected_output, dest);
 	return (0);
 }
 

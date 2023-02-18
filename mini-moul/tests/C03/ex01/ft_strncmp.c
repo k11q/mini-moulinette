@@ -6,37 +6,52 @@
 
 int test1(void)
 {
-	if (ft_strncmp("Hello", "HelloWorld", 8) >= 0)
+	int result;
+	int expected_output;
+
+	result = ft_strncmp("Hello", "HelloWorld", 8);
+	expected_output = -1;
+	if (result != expected_output)
 	{
-		printf("    " RED "[1] ft_strcpy(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[1] ft_strncmp(\"Hello\", \"HelloWorld\", 8) Expected %d, got %d\n"DEFAULT, expected_output, result);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strncmp(\"Hello\", \"HelloWorld\", 8) output %d\n" DEFAULT, ft_strncmp("Hello", "Hello1", 8));
+		printf("  " GREEN CHECKMARK GREY " [1] ft_strncmp(\"Hello\", \"HelloWorld\", 8) Expected %d, got %d\n"DEFAULT, expected_output, result);
 	return (0);
 }
 
 int test2(void)
 {
-	if (ft_strncmp("Hello", "HelloWorld", 4) != 0)
+	int result;
+	int expected_output;
+
+	result = ft_strncmp("Hello", "HelloWorld", 4);
+	expected_output = 0;
+	if (result != expected_output)
 	{
-		printf("    " RED "[1] ft_strcpy(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[2] ft_strncmp(\"Hello\", \"HelloWorld\", 4) Expected %d, got %d\n"DEFAULT, expected_output, result);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strncmp(\"Hello\", \"HelloWorld\", 4) output %d\n" DEFAULT, ft_strncmp("Hello", "Hello1", 4));
+		printf("  " GREEN CHECKMARK GREY " [2] ft_strncmp(\"Hello\", \"HelloWorld\", 4) Expected %d, got %d\n"DEFAULT, expected_output, result);
 	return (0);
 }
 
 int test3(void)
 {
-	if (ft_strncmp("Hello", "HelloWorld", 6) >= 0)
+	int result;
+	int expected_output;
+
+	result = ft_strncmp("Hello", "HelloWorld", 6);
+	expected_output = -1;
+	if (result != expected_output)
 	{
-		printf("    " RED "[1] ft_strcpy(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[3] ft_strncmp(\"Hello\", \"HelloWorld\", 6) Expected %d, got %d\n"DEFAULT, expected_output, result);
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strncmp(\"Hello\", \"HelloWorld\", 6) output %d\n" DEFAULT, ft_strncmp("Hello", "Hello1", 6));
+		printf("  " GREEN CHECKMARK GREY " [3] ft_strncmp(\"Hello\", \"HelloWorld\", 6) Expected %d, got %d\n"DEFAULT, expected_output, result);
 	return (0);
 }
 

@@ -12,11 +12,11 @@ int test1(void)
 	ft_strlcpy(dest, src, 10);
 	if (strcmp(dest, "World!") != 0)
 	{
-		printf("    " RED "[1] dest != \"World!\"\n");
+		printf("    " RED "[1] Expected dest != \"World!\"\n");
 		return (-1);
 	}
 	else
-		printf("  " GREEN CHECKMARK GREY " [1] dest == \"World!\"\n" DEFAULT);
+		printf("  " GREEN CHECKMARK GREY " [1] Expected dest == \"World!\"\n" DEFAULT);
 	return (0);
 }
 
