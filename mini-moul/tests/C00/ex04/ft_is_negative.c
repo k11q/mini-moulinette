@@ -5,6 +5,7 @@
 #include "../../../../ex04/ft_is_negative.c"
 #include "../../../utils/constants.h"
 
+void putchar(char c);
 void print_success(char *str, int num);
 void print_error(char *str, int num);
 void redirect_output(void);
