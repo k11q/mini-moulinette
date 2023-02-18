@@ -34,14 +34,15 @@ alias moul='~/mini-moulinette/mini-moul.sh'
 3. Run `./mini-moul.sh` with assignment number as argument. e.g: C02.
 
 ```bash
-moul {assignment number}
+moul <assignment number/>
 ```
 
-E.g.:
+E.g., run:
 
 ```bash
 moul C02
 ```
+
 
 ## Status
 

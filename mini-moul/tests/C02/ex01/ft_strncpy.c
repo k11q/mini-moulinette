@@ -8,14 +8,17 @@ int	test1(void)
 {
 	char src[] = "Hello";
 	char dest[] = "World1";
+	char *result;
 
-	if (strcmp(ft_strncpy(dest, src, 3), "Helld1") != 0)
+	result = ft_strncpy(dest, src, 3);
+
+	if (strcmp(result, "Helld1") != 0)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[1] ft_strncpy(\"World1\", \"Hello\", 3) Expected \"Helld1\", got \"%s\"\n", result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGH\") output 1\n"DEFAULT);
+		printf("  " GREEN CHECKMARK GREY " [1] ft_strncpy(\"World1\", \"Hello\", 3) Expected \"Helld1\", got \"%s\"\n" DEFAULT, result);
 	return (0);
 }
 
@@ -23,14 +26,17 @@ int	test2(void)
 {
 	char src[] = "Hello";
 	char dest[] = "World1";
+	char *result;
 
-	if (strcmp(ft_strncpy(dest, src, 5), "Hello1") != 0)
+	result = ft_strncpy(dest, src, 5);
+
+	if (strcmp(result, "Hello1") != 0)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[2] ft_strncpy(\"World1\", \"Hello\", 3) Expected \"Hello1\", got \"%s\"\n", result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGH\") output 1\n"DEFAULT);
+		printf("  " GREEN CHECKMARK GREY " [2] ft_strncpy(\"World1\", \"Hello\", 3) Expected \"Hello1\", got \"%s\"\n" DEFAULT, result);
 	return (0);
 }
 
@@ -38,14 +44,17 @@ int	test3(void)
 {
 	char src[] = "Hello";
 	char dest[] = "World1";
+	char *result;
 
-	if (strcmp(ft_strncpy(dest, src, 7), "Hello") != 0)
+	result = ft_strncpy(dest, src, 7);
+
+	if (strcmp(result, "Hello") != 0)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[3] ft_strncpy(\"World1\", \"Hello\", 3) Expected \"Hello\", got \"%s\"\n", result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGH\") output 1\n"DEFAULT);
+		printf("  " GREEN CHECKMARK GREY " [3] ft_strncpy(\"World1\", \"Hello\", 3) Expected \"Hello\", got \"%s\"\n" DEFAULT, result);
 	return (0);
 }
 

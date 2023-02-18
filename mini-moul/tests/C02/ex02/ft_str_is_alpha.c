@@ -6,37 +6,46 @@
 
 int	test1(void)
 {
-	if (ft_str_is_alpha("abcdefghijkl") != 1)
+	int result;
+
+	result = ft_str_is_alpha("abcdefghijkl");
+	if (result != 1)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[1] ft_str_is_alpha(\"abcdefghijkl\") Expected 1, got \"%d\"\n", result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGH\") output 1\n"DEFAULT);
+		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_alpha(\"abcdefghijkl\") Expected 1, got \"%d\"\n"DEFAULT, result);
 	return (0);
 }
 
 int	test2(void)
 {
-	if (ft_str_is_alpha("abcdefghijk2l") != 0)
+	int result;
+
+	result = ft_str_is_alpha("abcdefghijk2l");
+	if (result != 0)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[2] ft_str_is_alpha(\"abcdefghijk2l\") Expected 0, got \"%d\"\n", result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGH\") output 1\n"DEFAULT);
+		printf("  "GREEN CHECKMARK GREY" [2] ft_str_is_alpha(\"abcdefghijk2l\") Expected 0, got \"%d\"\n"DEFAULT, result);
 	return (0);
 }
 
 int	test3(void)
 {
-	if (ft_str_is_alpha("23adsaffq") != 0)
+	int result;
+
+	result = ft_str_is_alpha("23adsaffq");
+	if (result != 0)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[3] ft_str_is_alpha(\"23adsaffq\") Expected 0, got \"%d\"\n", result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGH\") output 1\n"DEFAULT);
+		printf("  "GREEN CHECKMARK GREY" [3] ft_str_is_alpha(\"23adsaffq\") Expected 0, got \"%d\"\n"DEFAULT, result);
 	return (0);
 }
 

@@ -6,37 +6,46 @@
 
 int	test1(void)
 {
-	if (ft_str_is_uppercase("ABCDEFGH") != 1)
+	int result;
+
+	result = ft_str_is_uppercase("ABCDEFGH");
+	if (result != 1)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"ABCDEFGH\") doesn\'t output 1\n");
+		printf("    " RED "[1] ft_str_is_uppercase(\"ABCDEFGH\") Expected 1, got %d\n"DEFAULT, result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGH\") output 1\n"DEFAULT);
+		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGH\") Expected 1, got %d\n"DEFAULT, result);
 	return (0);
 }
 
 int	test2(void)
 {
-	if (ft_str_is_uppercase("ABCDEFGHaI") != 0)
+	int result;
+
+	result = ft_str_is_uppercase("ABCDEFGHaI");
+	if (result != 0)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"ABCDEFGHaI\") doesn\'t output 0\n");
+		printf("    " RED "[2] ft_str_is_uppercase(\"ABCDEFGHaI\") Expected 0, got %d\n"DEFAULT, result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"ABCDEFGHaI\") output 0\n"DEFAULT);
+		printf("  "GREEN CHECKMARK GREY" [2] ft_str_is_uppercase(\"ABCDEFGHaI\") Expected 0, got %d\n"DEFAULT, result);
 	return (0);
 }
 
 int	test3(void)
 {
-	if (ft_str_is_uppercase("-_134556ABCDEFGaH67") != 0)
+	int result;
+
+	result = ft_str_is_uppercase("-_134556ABCDEFGaH67");
+	if (result != 0)
 	{
-		printf("    "RED"[1] ft_str_is_uppercase(\"-_134556ABCDEFGaH67\") doesn\'t output 0\n");
+		printf("    " RED "[3] ft_str_is_uppercase(\"-_134556ABCDEFGaH67\") Expected 0, got %d\n"DEFAULT, result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_uppercase(\"-_134556ABCDEFGaH67\") output 0\n"DEFAULT);
+		printf("  "GREEN CHECKMARK GREY" [3] ft_str_is_uppercase(\"-_134556ABCDEFGaH67\") Expected 0, got %d\n"DEFAULT, result);
 	return (0);
 }
 

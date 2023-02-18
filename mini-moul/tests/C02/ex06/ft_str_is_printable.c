@@ -6,25 +6,31 @@
 
 int	test1(void)
 {
-	if (ft_str_is_printable("ABDELKFSCO?I340990%") != 1)
+	int result;
+
+	result = ft_str_is_printable("ABDELKFSCO");
+	if (result != 1)
 	{
-		printf("    "RED"[1] ft_str_is_printable(\"ABDELKFSCO?I340990%\") doesn\'t output 1\n");
+		printf("    " RED "[1] ft_str_is_printable(\"ABDELKFSCO\") Expected 1, got %d\n"DEFAULT, result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_printable(\"ABDELKFSCO?I340990%\") output 1\n"DEFAULT);
+		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_printable(\"ABDELKFSCO\") Expected 1, got %d\n"DEFAULT, result);
 	return (0);
 }
 
 int	test2(void)
 {
-	if (ft_str_is_printable("\n\t\v\f") != 0)
+	int result;
+
+	result = ft_str_is_printable("\n\t\v\f");
+	if (result != 0)
 	{
-		printf("    "RED"[1] ft_str_is_printable(\"\\n\\t\\v\\f\\\") doesn\'t output 0\n");
+		printf("    " RED "[2] ft_str_is_printable(\\\"\\n\\t\\v\\f\\\") Expected 0, got %d\n"DEFAULT, result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_printable(\"\\n\\t\\v\\f\\\") output 0\n"DEFAULT);
+		printf("  "GREEN CHECKMARK GREY" [2] ft_str_is_printable(\\\"\\n\\t\\v\\f\\\") Expected 0, got %d\n"DEFAULT, result);
 	return (0);
 }
 
