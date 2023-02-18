@@ -20,7 +20,7 @@ Mini-moulinette doesn't check if there's extra files or norm, you need to do it 
 
 - Mini moulinette runs through all the tests cases automatically, and checks if the test cases are met.
 - It will then output the result.
-- The scores are based on 42's practise, where if easier/earlier questions are incorrect, the rest won't count.
+- The scores are based on 42's practice, where if easier/earlier questions are incorrect, the rest won't count.
 
 ## Get Started
 
