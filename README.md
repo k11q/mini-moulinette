@@ -39,7 +39,7 @@ alias mini='~/mini-moulinette/mini-moul.sh'
 > For now, the alias only works on the current terminal session, I'm figuring out how to make it permanent. Since then you need to add the alias for every terminal/session.
 
 
-3. Run `./mini-moul.sh` with assignment number as argument. e.g: C02.
+3. Run using command `mini` with assignment number as argument. e.g: C02.
 
 ```bash
 mini C02
@@ -82,7 +82,11 @@ mini C03
 ## Authors
 
 [Khairul Haaziq](@khairulhaaziq)
-[chatgpt](ai.com)
+
+
+## Contributors
+
+[chatGPT](ai.com)
 
 
 ## License
