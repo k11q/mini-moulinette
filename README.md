@@ -104,7 +104,7 @@ mini C03
 
 ## Authors
 
-[Khairul Haaziq](@khairulhaaziq)
+[Khairul Haaziq](https://github.com/khairulhaaziq)
 
 
 ## Contributors
@@ -114,4 +114,4 @@ mini C03
 
 ## License
 
-MIT. Copyright Khairul Haaziq 2023.
+MIT. Copyright 2023 [Khairul Haaziq](https://github.com/khairulhaaziq).
