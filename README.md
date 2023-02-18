@@ -58,10 +58,10 @@ moul C03
 | :-------------------- | :------------------------: | :--------------: |
 | C00                   | 9/9                        | Not yet rated    |
 | C01                   | 9/9                        | Not yet rated    |
-| C02                   | 12/13                      | Not yet rated    |
+| C02                   | 12/13                      | 99%              |
 | C03                   | 6/6                        | Not yet rated    |
-| C04                   | 4/6                        | Not yet rated    |
-| C05                   | 8/9                        | Not yet rated    |
+| C04                   | 4/6                        | 99%              |
+| C05                   | 8/9                        | 99%              |
 | C06                   | 0/4                        | Not yet rated    |
 | C07                   | 0/6                        | Not yet rated    |
 | C08                   | 0/6                        | Not yet rated    |
