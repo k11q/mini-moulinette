@@ -12,18 +12,35 @@ Mini-moulinette doesn't check if there's extra files or norm, you need to do it 
 
 ## Get Started
 
-1. Clone the repo
-2. Put the `mini-moul` directory and `mini-moul.sh` in your assignment directory, where you store your ex00, ex01... directories.
+1. Clone the repo in your root `~` directory.
+
+```bash
+cd ~
+```
+
+```bash
+git clone https://github.com/khairulhaaziq/mini-moulinette.git
+```
+
+2. Now create an alias for it
+
+> **Note**
+> For now, the alias only works on the current terminal session, I'm figuring out how to make it permanent. Since then you need to add the alias for every terminal/session.
+
+```bash
+alias moul='~/mini-moulinette/mini-moul.sh'
+```
+
 3. Run `./mini-moul.sh` with assignment number as argument. e.g: C02.
 
 ```bash
-./mini-moul.sh {assignment number}
+moul {assignment number}
 ```
 
 E.g.:
 
 ```bash
-./mini-moul.sh C02
+moul C02
 ```
 
 ## Status
@@ -44,26 +61,6 @@ E.g.:
 | C11                   | 0/8                        | Not yet rated    |
 | C12                   | 0/18                       | Not yet rated    |
 | C13                   | 0/8                        | Not yet rated    |
-
-## Alias
-
-To enhance your experience, create an alias:
-
-```bash
-alias moul='./mini-moul.sh'
-```
-
-Now you can run with just:
-
-```bash
-moul {assignment number}
-```
-
-For example:
-
-```bash
-moul C02
-```
 
 ## Contributing
 
