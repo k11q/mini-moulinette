@@ -53,14 +53,14 @@ echo "alias mini='~/mini-moulinette/mini-moul.sh'" >> ~/.bashrc && source ~/.bas
 ```
 
 
-5. Go to your assignment directory where you want to test: e.g: C02 directory
+4. Go to your assignment directory where you want to test: e.g: C02 directory
 
 ```bash
 cd C02
 ```
 
 
-6. Run using command `mini` with assignment number as argument. e.g: C02.
+5. Run using command `mini` with assignment number as argument. e.g: C02.
 
 ```bash
 mini C02
@@ -72,7 +72,7 @@ e.g: C03
 mini C03
 ```
 
-5. You can now run it for every assignment directory, where tests are provided. Have fun!
+6. You can now run it for every assignment directory, where tests are provided. Have fun!
 
 
 ## Status
