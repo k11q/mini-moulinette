@@ -15,7 +15,7 @@ if [[ "$#" -eq 1 ]]; then
   ./test.sh "$1"
   rm -R ../mini-moul
 else
-  printf "${RED}You need to choose an assignment. e.g: ./mini-moul.sh C02\n${DEFAULT}"
+  printf "${RED}You need to choose an assignment. e.g: mini C02\n${DEFAULT}"
 
 fi
 

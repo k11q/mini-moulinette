@@ -14,7 +14,7 @@ This is now day 11 of piscine. I have wasted so many hours getting evaluated, do
 
 ![screenshot](screenshot.jpg)
 
-- Mini moulinette runs through all the tests cases automatically, and checks if the test cases are met.
+- Mini moulinette runs through all the tests cases automatically, and checks if the test conditions are met.
 - It will then output the result.
 - The scores are based on 42's practice, where if easier/earlier questions are incorrect, the rest won't count.
 
