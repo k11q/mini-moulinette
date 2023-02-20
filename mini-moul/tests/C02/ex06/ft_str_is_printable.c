@@ -1,42 +1,58 @@
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <string.h>
 #include "../../../../ex06/ft_str_is_printable.c"
 #include "../../../utils/constants.h"
 
-int	test1(void)
+typedef struct	s_test
 {
-	int result;
+	char	*str;
+	char	*msg;
+	int		expected;
+}				t_test;
 
-	result = ft_str_is_printable("ABDELKFSCO");
-	if (result != 1)
-	{
-		printf("    " RED "[1] ft_str_is_printable(\"ABDELKFSCO\") Expected 1, got %d\n"DEFAULT, result);
-		return (-1);
-	}
-	else
-		printf("  "GREEN CHECKMARK GREY" [1] ft_str_is_printable(\"ABDELKFSCO\") Expected 1, got %d\n"DEFAULT, result);
-	return (0);
-}
-
-int	test2(void)
-{
-	int result;
-
-	result = ft_str_is_printable("\n\t\v\f");
-	if (result != 0)
-	{
-		printf("    " RED "[2] ft_str_is_printable(\\\"\\n\\t\\v\\f\\\") Expected 0, got %d\n"DEFAULT, result);
-		return (-1);
-	}
-	else
-		printf("  "GREEN CHECKMARK GREY" [2] ft_str_is_printable(\\\"\\n\\t\\v\\f\\\") Expected 0, got %d\n"DEFAULT, result);
-	return (0);
-}
+int	run_tests(t_test *tests, int count);
 
 int	main(void)
 {
-	if (test1()+test2()!=0)
-		return (-1);
-	return (0);
+	t_test tests[] = {
+		{
+			.str = "ABDELKFSCO",
+			.msg = "ABDELKFSCO",
+			.expected = 1
+		},
+		{
+			.str = "\n\t\v\f",
+			.msg = "\\n\\t\\v\\f",
+			.expected = 0
+		},
+		{
+			.str = "-_134556efSghij67",
+			.msg = "-_134556efSghij67",
+			.expected = 1
+		}
+	};
+	int count = sizeof(tests) / sizeof(tests[0]);
+	
+	return (run_tests(tests, count));
+}
+
+int	run_tests(t_test *tests, int count)
+{
+	int i;
+	int error = 0;
+	
+	for (i = 0; i < count; i++)
+	{
+		int result = ft_str_is_printable(tests[i].str);
+		
+		if (result != tests[i].expected)
+		{
+			printf("    " RED "[%d] ft_str_is_printable(\"%s\") Expected %d, got %d\n" DEFAULT, i + 1, tests[i].msg, tests[i].expected, result);
+			error -= 1;
+		}
+		else
+			printf("  " GREEN CHECKMARK GREY " [%d] ft_str_is_printable(\"%s\") Expected %d, got %d\n" DEFAULT, i + 1, tests[i].msg, tests[i].expected, result);
+	}
+	return (error);
 }

@@ -4,62 +4,59 @@
 #include "../../../../ex00/ft_strcpy.c"
 #include "../../../utils/constants.h"
 
-int test1(void)
+typedef struct	s_test
 {
-	char dest[12];
-	char ex[12] = "FGccjqWCcYr";
-	char *result;
+	char	*desc;
+	char	dest[40];
+	char	*src;
+	char	*expected;
+}		t_test;
+
+int	run_tests(t_test *tests, int count);
+
+int	main(void)
+{
+	t_test tests[] = {
+		{
+			.desc = "ft_strcpy(dest[12], \"FGccjqWCcYr\")",
+			.dest = {0},
+			.src = "FGccjqWCcYr",
+			.expected = "FGccjqWCcYr"
+		},
+		{
+			.desc = "ft_strcpy(dest[40], \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\")",
+			.dest = {0},
+			.src = "gVepWWXynLOXqCHCscGrowUZSebdZIfy",
+			.expected = "gVepWWXynLOXqCHCscGrowUZSebdZIfy"
+		},
+		{
+			.desc = "ft_strcpy(dest[4], \"TcXF\")",
+			.dest = {0},
+			.src = "TcXF",
+			.expected = "TcXF"
+		}
+	};
+	int count = sizeof(tests) / sizeof(tests[0]);
 	
-	result = ft_strcpy(dest, ex);
-
-	if (strcmp(result, "FGccjqWCcYr") != 0)
-	{
-		printf("    " RED "[1] ft_strcpy(dest[12], \"FGccjqWCcYr\") Expected \"FGccjqWCcYr\", got %s\n", result);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strcpy(dest[12], \"FGccjqWCcYr\") Expected \"FGccjqWCcYr\", got %s\n" DEFAULT, result);
-	return (0);
+	return (run_tests(tests, count));
 }
 
-int test2(void)
+int	run_tests(t_test *tests, int count)
 {
-	char dest2[40];
-	char ex2[40] = "gVepWWXynLOXqCHCscGrowUZSebdZIfy";
-	char *result;
-
-	result = ft_strcpy(dest2, ex2);
-
-	if (strcmp(result, "gVepWWXynLOXqCHCscGrowUZSebdZIfy") != 0)
+	int i;
+	int error = 0;
+	
+	for (i = 0; i < count; i++)
 	{
-		printf("    " RED "[2] ft_strcpy(dest[12], \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\") Expected \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\", got %s\n", result);
-		return (-1);
+		char *result = ft_strcpy(tests[i].dest, tests[i].src);
+		
+		if (strcmp(result, tests[i].expected) != 0)
+		{
+			printf("    " RED "[%d] %s Expected \"%s\", got \"%s\"\n", i + 1, tests[i].desc, tests[i].expected, result);
+			error -= 1;
+		}
+		else
+			printf("  " GREEN CHECKMARK GREY " [%d] %s Expected \"%s\", got \"%s\"\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected, result);
 	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [2] ft_strcpy(dest[12], \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\") Expected \"gVepWWXynLOXqCHCscGrowUZSebdZIfy\", got %s\n" DEFAULT, result);
-	return (0);
-}
-
-int test3(void)
-{
-	char dest3[5];
-	char ex3[5] = "TcXF";
-	char *result;
-
-	result = ft_strcpy(dest3, ex3);
-	if (strcmp(result, "TcXF") != 0)
-	{
-		printf("    " RED "[3] ft_strcpy(dest[12], \"TcXF\") Expected \"TcXF\", got %s\n", result);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [3] ft_strcpy(dest[12], \"TcXF\") Expected \"TcXF\", got %s\n" DEFAULT, result);
-	return (0);
-}
-
-int main(void)
-{
-	if (test1() + test2() + test3() != 0)
-		return (-1);
-	return (0);
+	return (error);
 }

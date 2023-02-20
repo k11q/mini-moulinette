@@ -5,83 +5,91 @@
 #include "../../../../ex11/ft_putstr_non_printable.c"
 #include "../../../utils/constants.h"
 
-int test1(void)
+typedef struct s_test
 {
-	// Redirect the output to a file
-	int saved_stdout = dup(STDOUT_FILENO);
-	int output_fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	dup2(output_fd, STDOUT_FILENO);
-	close(output_fd);
+	char *desc;
+	char *src;
+	char *expected;
+} t_test;
 
-	// Call the function to be tested
-	ft_putstr_non_printable("Coucou\ntu vas bien");
+int run_tests(t_test *tests, int count);
 
-	// Restore the original output
-	fflush(stdout);
-	dup2(saved_stdout, STDOUT_FILENO);
-	close(saved_stdout);
+int main(void)
+{
+	t_test tests[] = {
+	    {.desc = "ft_putstr_non_printable(\"Coucou\\ntu vas bien\")",
+	     .src = "Coucou\ntu vas bien",
+	     .expected = "Coucou\\0atu vas bien"},
+	    {.desc = "ft_putstr_non_printable(\"\")",
+	     .src = "",
+	     .expected = ""},
+	    {.desc = "ft_putstr_non_printable(\"\\x01\")",
+	     .src = "\t01",
+	     .expected = "\\0901"},
+	    {.desc = "ft_putstr_non_printable(\"\\x1F\")",
+	     .src = "\x1F",
+	     .expected = "\\1f"},
+	    {.desc = "ft_putstr_non_printable(\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\")",
+	     .src = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+	     .expected = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"},
+	    {.desc = "ft_putstr_non_printable(\"0123456789\")",
+	     .src = "0123456789",
+	     .expected = "0123456789"},
+	    {.desc = "ft_putstr_non_printable(\"This is a long string. It has more than 16 bytes.\")",
+	     .src = "This is a long string. It has more than 16 bytes.",
+	     .expected = "This is a long string. It has more than 16 bytes."}
+	    // Add more test cases here
+	};
+	int count = sizeof(tests) / sizeof(tests[0]);
 
-	// Open the output file and check its contents
-	FILE *fp = fopen("output.txt", "r");
-	char buffer[1024];
-	fgets(buffer, sizeof(buffer), fp);
-	fclose(fp);
+	return (run_tests(tests, count));
+}
 
-	// Check that the output matches the expected value
-	const char *expected_output = "Coucou\\0atu vas bien";
-	if (strcmp(buffer, expected_output) != 0)
+int run_tests(t_test *tests, int count)
+{
+	int i;
+	int error = 0;
+
+	for (i = 0; i < count; i++)
 	{
-		printf("    " RED "[1] Expected \"Coucou\\0atu vas bien\", got \"%s\"\n", buffer);
+		// Flush the standard output buffer
+		fflush(stdout);
+
+		char buffer[1024];
+		// Clear the buffer used to capture the output of the function being tested
+		memset(buffer, 0, sizeof(buffer));
+
+		// Redirect the output to a file
+		int saved_stdout = dup(STDOUT_FILENO);
+		int output_fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+		dup2(output_fd, STDOUT_FILENO);
+		close(output_fd);
+
+		// Call the function to be tested
+		ft_putstr_non_printable(tests[i].src);
+
+		// Restore the original output
+		fflush(stdout);
+		dup2(saved_stdout, STDOUT_FILENO);
+		close(saved_stdout);
+
+		// Open the output file and check its contents
+		FILE *fp = fopen("output.txt", "r");
+		fgets(buffer, sizeof(buffer), fp);
+		fclose(fp);
+
+		// Check that the output matches the expected value
+		if (strcmp(buffer, tests[i].expected) != 0)
+		{
+			printf("    " RED "[%d] %s Expected \"%s\", got \"%s\"\n", i + 1, tests[i].desc, tests[i].expected, buffer);
+			error -= 1;
+		}
+		else
+			printf("  " GREEN CHECKMARK GREY " [%d] %s output \"%s\" as expected\n" DEFAULT, i + 1, tests[i].desc, buffer);
+
+		// Delete the output file
 		remove("output.txt");
-		return (-1);
 	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_putstr_non_printable(\"Coucou\\ntu vas bien\") output \"Coucou\\0atu vas bien\"\n" DEFAULT);
-	remove("output.txt");
-	return (0);
-}
 
-/*
-int test2(void)
-{
-	// Redirect the output to a file
-	int saved_stdout = dup(STDOUT_FILENO);
-	int output_fd = open("output2.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	dup2(output_fd, STDOUT_FILENO);
-	close(output_fd);
-
-	// Call the function to be tested
-	ft_putstr_non_printable("Coucou tu vas bie\t\v\0n");
-
-	// Restore the original output
-	fflush(stdout);
-	dup2(saved_stdout, STDOUT_FILENO);
-	close(saved_stdout);
-
-	// Open the output file and check its contents
-	FILE *fp = fopen("output2.txt", "r");
-	char buffer[1024];
-	fgets(buffer, sizeof(buffer), fp);
-	fclose(fp);
-
-	// Check that the output matches the expected value
-	const char *expected_output = "Coucou tu vas bie\\09\\0b";
-	if (strcmp(buffer, expected_output) != 0)
-	{
-		printf("    " RED "[2] Expected \"%s\", got \"%s\"\n" DEFAULT, expected_output, buffer);
-		remove("output2.txt");
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [2] ft_putstr_non_printable(\"Coucou tu vas bie\\t\\v\\0n\") output \"Coucou tu vas bie\\09\\0b\" \n" DEFAULT);
-	remove("output2.txt");
-	return (0);
-}
-*/
-
-int main()
-{
-	if (test1() != 0)
-		return (-1);
-	return 0;
+	return (error);
 }
