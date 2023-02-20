@@ -5,63 +5,83 @@
 #include "../../../../ex02/ft_putnbr.c"
 #include "../../../utils/constants.h"
 
-void print_success(char *str, int num);
-void print_error(char *str, int num);
-void redirect_output(void);
-int test1(void);
+typedef struct s_test
+{
+        char *desc;
+        int n;
+        char *expected;
+} t_test;
+
+int run_tests(t_test *tests, int count);
 
 int main(void)
 {
-        if (test1() != 0)
-                return (-1);
-        return (0);
+        t_test tests[] = {
+            {.desc = "ft_putnbr(0)",
+             .n = 0,
+             .expected = "0"},
+            {.desc = "ft_putnbr(-2147483648)",
+             .n = -2147483648,
+             .expected = "-2147483648"},
+            {.desc = "ft_putnbr(2147483647)",
+             .n = 2147483647,
+             .expected = "2147483647"},
+            {.desc = "ft_putnbr(42)",
+             .n = 42,
+             .expected = "42"},
+            {.desc = "ft_putnbr(-42)",
+             .n = -42,
+             .expected = "-42"},
+            // Add more test cases here
+        };
+        int count = sizeof(tests) / sizeof(tests[0]);
+        return (run_tests(tests, count));
 }
 
-int test1(void)
+int run_tests(t_test *tests, int count)
 {
-        redirect_output();
-        // Open the output file and check its contents
-        FILE *fp = fopen("output.txt", "r");
-        char buffer[80024];
-        fgets(buffer, sizeof(buffer), fp);
-        fclose(fp);
-
-        // Check that the output matches the expected value
-        const char *expected_output = "-2147483648";
-            if (strcmp(buffer, expected_output) != 0)
+        int i;
+        int error = 0;
+        for (i = 0; i < count; i++)
         {
-                printf("    " RED "[1] Expected \"%s\", got \"%s\"\n", expected_output, buffer);
+                // Flush the standard output buffer
+                fflush(stdout);
+
+                char buffer[1024];
+                // Clear the buffer used to capture the output of the function being tested
+                memset(buffer, 0, sizeof(buffer));
+
+                // Redirect the output to a file
+                int saved_stdout = dup(STDOUT_FILENO);
+                int output_fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+                dup2(output_fd, STDOUT_FILENO);
+                close(output_fd);
+
+                // Call the function to be tested
+                ft_putnbr(tests[i].n);
+
+                // Restore the original output
+                fflush(stdout);
+                dup2(saved_stdout, STDOUT_FILENO);
+                close(saved_stdout);
+
+                // Open the output file and check its contents
+                FILE *fp = fopen("output.txt", "r");
+                fgets(buffer, sizeof(buffer), fp);
+                fclose(fp);
+
+                // Check that the output matches the expected value
+                if (strcmp(buffer, tests[i].expected) != 0)
+                {
+                        printf("    " RED "[%d] %s Expected \"%s\", got \"%s\"\n", i + 1, tests[i].desc, tests[i].expected, buffer);
+                        error -= 1;
+                }
+                else
+                        printf("  " GREEN CHECKMARK GREY " [%d] %s output \"%s\" as expected\n" DEFAULT, i + 1, tests[i].desc, buffer);
+
+                // Delete the output file
                 remove("output.txt");
-                return (-1);
         }
-        else printf("  " GREEN CHECKMARK GREY " [1] ft_putnbr(-2147483648) output \"%s\"\n" DEFAULT, buffer);
-        remove("output.txt");
-        return (0);
-}
 
-void redirect_output(void)
-{
-        // Redirect the output to a file
-        int saved_stdout = dup(STDOUT_FILENO);
-        int output_fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-        dup2(output_fd, STDOUT_FILENO);
-        close(output_fd);
-
-        // Call the function to be tested
-        ft_putnbr(-2147483648);
-
-        // Restore the original output
-        fflush(stdout);
-        dup2(saved_stdout, STDOUT_FILENO);
-        close(saved_stdout);
-}
-
-void print_success(char *str, int num)
-{
-        printf("  " GREEN CHECKMARK GREY " [%d] %s\n" DEFAULT, num, str);
-}
-
-void print_error(char *str, int num)
-{
-        printf("    " RED "[%d] %s\n" DEFAULT, num, str);
+        return (error);
 }

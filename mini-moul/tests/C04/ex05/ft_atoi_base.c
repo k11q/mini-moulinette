@@ -4,64 +4,72 @@
 #include "../../../../ex05/ft_atoi_base.c"
 #include "../../../utils/constants.h"
 
-int test1(void);
-int test2(void);
-int test3(void);
+typedef struct s_test
+{
+    char *desc;
+    char *str;
+    char *base;
+    int expected_output;
+} t_test;
+
+int run_tests(t_test *tests, int count);
 
 int main(void)
 {
-	if (test1()+test2()+test3() != 0)
-		return (-1);
-	return (0);
+    t_test tests[] = {
+        {
+            .desc = "Convert a binary number to decimal",
+            .str = "101101",
+            .base = "01",
+            .expected_output = 45,
+        },
+        {
+            .desc = "Convert a hexadecimal number to decimal",
+            .str = "ff",
+            .base = "0123456789abcdef",
+            .expected_output = 255,
+        },
+        {
+            .desc = "Convert a number with leading whitespace and sign to decimal",
+            .str = "    +-14353",
+            .base = "0123456789",
+            .expected_output = -14353,
+        },
+        {
+            .desc = "Convert a binary number with leading whitespace and sign to decimal",
+            .str = "         ---10101001",
+            .base = "01",
+            .expected_output = -169,
+        },
+        {
+            .desc = "Convert a hexadecimal number with leading whitespace and sign to decimal",
+            .str = "     +---59",
+            .base = "0123456789abcdef",
+            .expected_output = -89,
+        },
+        // Add more test cases here
+    };
+    int count = sizeof(tests) / sizeof(tests[0]);
+
+    return run_tests(tests, count);
 }
 
-int test1(void)
+int run_tests(t_test *tests, int count)
 {
-	int result;
-	int expected_output;
+    int i;
+    int error = 0;
 
-	result = ft_atoi_base("    +-14353", "0123456789");
-	expected_output = -14353;
-	if (result != expected_output)
-	{
-		printf("    " RED "[1] ft_atoi_base(\"    +-14353\", \"0123456789\") Expected %d, got %d\n"DEFAULT, expected_output, result);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_atoi_base(\"    +-14353\", \"0123456789\") Expected %d, got %d\n"DEFAULT, expected_output, result);
-	return (0);
-}
+    for (i = 0; i < count; i++)
+    {
+        int result = ft_atoi_base(tests[i].str, tests[i].base);
+        if (result != tests[i].expected_output)
+        {
+            printf("    " RED "[%d] %s Expected %d, got %d\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected_output, result);
+            error -= 1;
+        }
+        else
+            printf("  " GREEN CHECKMARK GREY " [%d] %s output %d as expected\n" DEFAULT, i + 1, tests[i].desc, result);
+    }
 
-int test2(void)
-{
-	int result;
-	int expected_output;
-
-	result = ft_atoi_base("         ---10101001", "01");
-	expected_output = -169;
-	if (result != expected_output)
-	{
-		printf("    " RED "[2] ft_atoi_base(\"         ---10101001\", \"01\") Expected %d, got %d\n"DEFAULT, expected_output, result);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [2] ft_atoi_base(\"         ---10101001\", \"01\") Expected %d, got %d\n"DEFAULT, expected_output, result);
-	return (0);
-}
-
-int test3(void)
-{
-	int result;
-	int expected_output;
-
-	result = ft_atoi_base("     +---59", "0123456789abcdef");
-	expected_output = -89;
-	if (result != expected_output)
-	{
-		printf("    " RED "[3] ft_atoi_base(\"     +---59\", \"0123456789abcdef\") Expected %d, got %d\n"DEFAULT, expected_output, result);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [3] ft_atoi_base(\"     +---59\", \"0123456789abcdef\") Expected %d, got %d\n"DEFAULT, expected_output, result);
-	return (0);
+    return (error);
 }

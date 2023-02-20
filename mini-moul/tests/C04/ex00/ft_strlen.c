@@ -2,28 +2,70 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../../../../ex00/ft_strlen.c"
+#include "../../../utils/constants.h"
 
-#define GREEN "\033[38;5;84m"
-#define RED "\033[31m"
-#define GREY "\033[38;5;8m"
-#define DEFAULT "\033[0m"
-#define CHECKMARK "\xE2\x9C\x93"
-
-int test1(void)
+typedef struct s_test
 {
-	if (ft_strlen("854dsjfksdlk") != 12)
-	{
-		printf("    " RED "[1] ft_strlen(\"854dsjfksdlk\") doesn\'t output 12\n");
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strlen(\"854dsjfksdlk\") output %d\n" DEFAULT, ft_strlen("854dsjfksdlk"));
-	return (0);
-}
+    char *desc;
+    char *input;
+    int expected_output;
+} t_test;
+
+int run_tests(t_test *tests, int count);
 
 int main(void)
 {
-	if (test1() != 0)
-		return (-1);
-	return (0);
+    t_test tests[] = {
+        {
+            .desc = "Empty string",
+            .input = "",
+            .expected_output = 0,
+        },
+        {
+            .desc = "Single character",
+            .input = "H",
+            .expected_output = 1,
+        },
+        {
+            .desc = "Long string with no null character",
+            .input = "Hello, world!",
+            .expected_output = 13,
+        },
+        {
+            .desc = "Long string with null character",
+            .input = "Hello\0, world!",
+            .expected_output = 5,
+        },
+        {
+            .desc = "Very long string",
+            .input = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            .expected_output = 62,
+        },
+    };
+    int count = sizeof(tests) / sizeof(tests[0]);
+
+    return run_tests(tests, count);
+}
+
+int run_tests(t_test *tests, int count)
+{
+    int i;
+    int error = 0;
+
+    for (i = 0; i < count; i++)
+    {
+        int result = ft_strlen(tests[i].input);
+
+        if (result != tests[i].expected_output)
+        {
+            printf("    " RED "[%d] ft_strlen(\"%s\") Expected %d, got %d\n" DEFAULT, i + 1, tests[i].input, tests[i].expected_output, result);
+            error -= 1;
+        }
+        else
+        {
+            printf("  " GREEN CHECKMARK GREY " [%d] ft_strlen(\"%s\") output %d as expected\n" DEFAULT, i + 1, tests[i].input, result);
+        }
+    }
+
+    return error;
 }
