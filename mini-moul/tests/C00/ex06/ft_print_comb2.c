@@ -34,7 +34,7 @@ int test1(void)
                 remove("output.txt");
                 return (-1);
         }
-        else printf("  " GREEN CHECKMARK GREY " ft_print_comb2() output correctly\n"DEFAULT);
+        else printf("  " GREEN CHECKMARK GREY " ft_print_comb2() output as expected\n"DEFAULT);
         remove("output.txt");
         return (0);
 }

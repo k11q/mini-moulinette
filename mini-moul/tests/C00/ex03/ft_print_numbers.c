@@ -47,7 +47,7 @@ int test1(void)
                 return (-1);
         }
         else
-                printf("  " GREEN CHECKMARK GREY " [1] ft_print_numbers() Expected \"%s\", got \"%s\"\n"DEFAULT, expected_output, buffer);
+                printf("  " GREEN CHECKMARK GREY " [1] ft_print_numbers() output \"%s\" as expected\n"DEFAULT, buffer);
         remove("output.txt");
         return (0);
 }

@@ -38,7 +38,7 @@ int run_tests(t_test *tests, int count)
                 // Flush the standard output buffer
                 fflush(stdout);
 
-                char buffer[1024];
+                char buffer[10240];
                 // Clear the buffer used to capture the output of the function being tested
                 memset(buffer, 0, sizeof(buffer));
 
