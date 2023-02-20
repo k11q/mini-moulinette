@@ -4,27 +4,83 @@
 #include "../../../../ex05/ft_strlcat.c"
 #include "../../../utils/constants.h"
 
-int test1(void)
+typedef struct s_test
 {
-	char src[] = "Born to code";
-    	char dest [] = "1337 42";
-	char *expected_output = "1337 42Born to code";
+    char *desc;
+    char *src;
+    char *dest;
+    int size;
+    char *expected_output;
+} t_test;
 
-	ft_strlcat(dest, src, 20);
-	
-	if (strcmp(dest, expected_output) != 0)
-	{
-		printf("    " RED "[1] ft_strlcat(\"1337 42\", \"Born to code\", 20) Expected \"%s\" output \"%s\"\n" DEFAULT, expected_output, dest);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strlcat(\"1337 42\", \"Born to code\", 20) Expected \"%s\" output \"%s\"\n" DEFAULT, expected_output, dest);
-	return (0);
-}
+int run_tests(t_test *tests, int count);
 
 int main(void)
 {
-	if (test1() != 0)
-		return (-1);
-	return (0);
+    t_test tests[] = {
+        {
+            .desc = "Concatenate two strings",
+            .src = "Born to code",
+            .dest = "1337 42",
+            .size = 20,
+            .expected_output = "1337 42Born to code",
+        },
+        {
+            .desc = "Concatenate empty strings",
+            .src = "",
+            .dest = "",
+            .size = 10,
+            .expected_output = "",
+        },
+        {
+            .desc = "Append to an empty string",
+            .src = "hello",
+            .dest = "",
+            .size = 10,
+            .expected_output = "hello",
+        },
+        {
+            .desc = "Concatenate with string larger than size",
+            .src = "Born to code",
+            .dest = "1337 42",
+            .size = 7,
+            .expected_output = "1337 42",
+        },
+        {
+            .desc = "Concatenate same strings with size larger than sum of their lengths",
+            .src = "Test",
+            .dest = "Test",
+            .size = 10,
+            .expected_output = "TestTest",
+        },
+    };
+    int count = sizeof(tests) / sizeof(tests[0]);
+
+    return run_tests(tests, count);
+}
+
+int run_tests(t_test *tests, int count)
+{
+    int i;
+    int error = 0;
+
+    for (i = 0; i < count; i++)
+    {
+        char dest[strlen(tests[i].dest) + 1];
+        strcpy(dest, tests[i].dest);
+
+        ft_strlcat(dest, tests[i].src, tests[i].size);
+
+        if (strcmp(dest, tests[i].expected_output) != 0)
+        {
+            printf("    " RED "[%d] %s Expected \"%s\" output \"%s\"\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected_output, dest);
+            error -= 1;
+        }
+        else
+        {
+            printf("  " GREEN CHECKMARK GREY " [%d] %s Expected \"%s\" output \"%s\"\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected_output, dest);
+        }
+    }
+
+    return error;
 }

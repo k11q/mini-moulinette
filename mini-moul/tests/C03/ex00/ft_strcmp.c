@@ -4,115 +4,74 @@
 #include "../../../../ex00/ft_strcmp.c"
 #include "../../../utils/constants.h"
 
-int test1(void)
+typedef struct s_test
 {
-	if (ft_strcmp("Hello", "Hello1") >= 0)
-	{
-		printf("    " RED "[1] ft_strcmp(\"Hello\", \"Hello1\") Expected -49, got %d\n"DEFAULT, ft_strcmp("Hello", "Hello1"));
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_strcmp(\"Hello\", \"Hello1\") Expected -49, got %d\n"DEFAULT, ft_strcmp("Hello", "Hello1"));
-	return (0);
-}
+    char *desc;
+    char *s1;
+    char *s2;
+    int expected;
+} t_test;
 
-int test2(void)
-{
-	if (ft_strcmp("Hello", "He") <= 0)
-	{
-		printf("    " RED "[2] ft_strcmp(\"Hello\", \"He\") Expected 108, got %d\n" DEFAULT, ft_strcmp("Hello", "He"));
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [2] ft_strcmp(\"Hello\", \"He\") output %d\n" DEFAULT, ft_strcmp("Hello", "He"));
-	return (0);
-}
-
-int test3(void)
-{
-	if (ft_strcmp("Hello", "Hello") != 0)
-	{
-		printf("    " RED "[3] ft_strcmp(\"Hello\", \"Hello\") Expected 0, got %d\n"DEFAULT, ft_strcmp("Hello", "Hello"));
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [3] ft_strcmp(\"Hello\", \"Hello\") Expected 0, got %d\n"DEFAULT, ft_strcmp("Hello", "Hello"));
-	return (0);
-}
+int run_tests(t_test *tests, int count);
 
 int main(void)
 {
-	if (test1() + test2() + test3() != 0)
-		return (-1);
-	return (0);
+    t_test tests[] = {
+        {
+            .desc = "Compare two equal strings",
+            .s1 = "Hello",
+            .s2 = "Hello",
+            .expected = 0,
+        },
+        {
+            .desc = "Compare two different strings of equal length",
+            .s1 = "Hello",
+            .s2 = "He",
+            .expected = 108,
+        },
+        {
+            .desc = "Compare two different strings of different length",
+            .s1 = "Hello",
+            .s2 = "Hello1",
+            .expected = -49,
+        },
+        {
+            .desc = "Compare two empty strings",
+            .s1 = "",
+            .s2 = "",
+            .expected = 0,
+        },
+        {
+            .desc = "Compare a string with an empty string",
+            .s1 = "Hello",
+            .s2 = "",
+            .expected = 72,
+        },
+    };
+    int count = sizeof(tests) / sizeof(tests[0]);
+
+    return run_tests(tests, count);
 }
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "../../../../ex00/ft_strcmp.c"
-#include "../../../utils/constants.h"
-
-typedef struct	s_test
-{
-	char	*desc;
-	char	*src;
-	char	*expected;
-}		t_test;
-
-int	run_tests(t_test *tests, int count);
-
-int	main(void)
-{
-	t_test tests[] = {
-		{
-			.desc = "ft_strcmp(\"ABCDEFGHIJK\")",
-			.src = "ABCDEFGHIJK",
-			.expected = "abcdefghijk"
-		},
-		{
-			.desc = "ft_strcmp(\"agsKofnkFgbsdv\")",
-			.src = "agsKofnkFgbsdv",
-			.expected = "agskofnkfgbsdv"
-		},
-		{
-			.desc = "ft_strcmp(\"23_-3FREWG4WVFSD4\")",
-			.src = "23_-3FREWG4WVFSD4",
-			.expected = "23_-3frewg4wvfsd4"
-		},
-	};
-	int count = sizeof(tests) / sizeof(tests[0]);
-	
-	return (run_tests(tests, count));
-}
-
-int	run_tests(t_test *tests, int count)
+int run_tests(t_test *tests, int count)
 {
     int i;
     int error = 0;
 
     for (i = 0; i < count; i++)
     {
-        char *result = malloc(sizeof(char) * (strlen(tests[i].src) + 1));
-        if (result == NULL)
-        {
-            perror("Error: malloc failed");
-            exit(EXIT_FAILURE);
-        }
+        int result = ft_strcmp(tests[i].s1, tests[i].s2);
 
-        strcpy(result, tests[i].src);
-        ft_strcmp(result);
-
-        if (ft_strcmp(result, tests[i].expected) != 0)
+        if (result != tests[i].expected)
         {
-            printf("    " RED "[%d] %s Expected \"%s\", got \"%s\"\n", i + 1, tests[i].desc, tests[i].expected, result);
+            printf("    " RED "[%d] %s Expected %d, got %d\n", i + 1, tests[i].desc, tests[i].expected, result);
             error -= 1;
         }
         else
-            printf("  " GREEN CHECKMARK GREY " [%d] %s Expected \"%s\", got \"%s\"\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected, result);
-
-        free(result);
+        {
+            printf("  " GREEN CHECKMARK GREY " [%d] %s Expected %d, got %d\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected, result);
+        }
     }
 
-    return (error);
+    return error;
 }
