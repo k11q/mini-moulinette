@@ -1,7 +1,5 @@
 source config.sh
 
-#readonly DATA=$(cat data.json)
-
 #utils
 index=0
 index2=0
@@ -25,6 +23,7 @@ dirname_found=0
 
 main()
 {
+    start_time=$(date +%s)
     #print_collected_files
     for dir in ./tests/* ; do
         dirname="$(basename "$dir")"
@@ -161,7 +160,9 @@ print_footer()
         printf "Final score:   ""${RED}$(echo $PERCENT | bc)/100${DEFAULT}\n"
         printf "Status:        ""${RED}FAILED${DEFAULT}\n"
     fi
-    printf "${GREY}Test completed.\n"
+    end_time=$(date +%s)
+    elapsed_time=$(expr $end_time - $start_time)
+    printf "${GREY}Test completed. ${PINK}Total elapsed time: ${elapsed_time}s${DEFAULT}.\n"
     space
 }
 

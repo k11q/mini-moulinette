@@ -5,26 +5,69 @@
 #include "../../../../ex07/ft_find_next_prime.c"
 #include "../../../utils/constants.h"
 
-int test1(void);
+typedef struct s_test
+{
+    char *desc;
+    int n;
+    int expected;
+} t_test;
+
+int run_tests(t_test *tests, int count);
 
 int main(void)
 {
-	if (test1() != 0)
-		return (-1);
-	return (0);
+    t_test tests[] = {
+        {
+            .desc = "Next prime after 0",
+            .n = 0,
+            .expected = 2,
+        },
+        {
+            .desc = "Next prime after 1",
+            .n = 1,
+            .expected = 2,
+        },
+        {
+            .desc = "Next prime after 2",
+            .n = 2,
+            .expected = 2,
+        },
+        {
+            .desc = "Next prime after 10",
+            .n = 10,
+            .expected = 11,
+        },
+        {
+            .desc = "Next prime after a negative number",
+            .n = -5,
+            .expected = 2,
+        },
+        // Add more test cases here
+    };
+    int count = sizeof(tests) / sizeof(tests[0]);
+
+    return run_tests(tests, count);
 }
 
-int test1(void)
-{	
-	int	number;
+int run_tests(t_test *tests, int count)
+{
+    int i;
+    int error = 0;
 
-	number = ft_find_next_prime(407013);
-	if (number != 407023)
-	{
-		printf("    " RED "[1] Expected %d, got %d\n" DEFAULT, 407023, number);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_find_next_prime(407013) output %d\n" DEFAULT, number);
-	return (0);
+    for (i = 0; i < count; i++)
+    {
+        int result = ft_find_next_prime(tests[i].n);
+
+        if (result != tests[i].expected)
+        {
+            printf("    " RED "[%d] %s Expected %d, got %d\n", i + 1, tests[i].desc, tests[i].expected, result);
+            error -= 1;
+        }
+        else
+        {
+            printf("  " GREEN CHECKMARK GREY " [%d] %s Expected %d, got %d\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected, result);
+        }
+    }
+
+    return error;
 }

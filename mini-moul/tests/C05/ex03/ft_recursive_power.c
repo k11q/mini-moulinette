@@ -5,26 +5,74 @@
 #include "../../../../ex03/ft_recursive_power.c"
 #include "../../../utils/constants.h"
 
-int test1(void);
+typedef struct s_test
+{
+    char *desc;
+    int base;
+    int power;
+    int expected;
+} t_test;
+
+int run_tests(t_test *tests, int count);
 
 int main(void)
 {
-	if (test1() != 0)
-		return (-1);
-	return (0);
+    t_test tests[] = {
+        {
+            .desc = "Power of 0",
+            .base = 10,
+            .power = 0,
+            .expected = 1,
+        },
+        {
+            .desc = "Power of 1",
+            .base = 2,
+            .power = 1,
+            .expected = 2,
+        },
+        {
+            .desc = "Power of 2",
+            .base = 3,
+            .power = 2,
+            .expected = 9,
+        },
+        {
+            .desc = "Power of a negative number",
+            .base = -2,
+            .power = 3,
+            .expected = -8,
+        },
+        {
+            .desc = "Power of a number with a negative power",
+            .base = 2,
+            .power = -3,
+            .expected = 0,
+        },
+    };
+    int count = sizeof(tests) / sizeof(tests[0]);
+
+    return run_tests(tests, count);
 }
 
-int test1(void)
-{	
-	int	number;
+int run_tests(t_test *tests, int count)
+{
+    int i;
+    int error = 0;
 
-	number = ft_recursive_power(4, 3);
-	if (number != 64)
-	{
-		printf("    " RED "[1] Expected %d, got %d\n" DEFAULT, 64, number);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_recursive_power(4, 3) output %d\n" DEFAULT, number);
-	return (0);
+    for (i = 0; i < count; i++)
+    {
+        int result = ft_recursive_power(tests[i].base, tests[i].power);
+
+        if (result != tests[i].expected)
+        {
+            printf("    " RED "[%d] %s Expected %d, got %d\n", i + 1, tests[i].desc, tests[i].expected, result);
+            error -= 1;
+        }
+        else
+        {
+            printf("  " GREEN CHECKMARK GREY " [%d] %s Expected %d, got %d\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected, result);
+        }
+    }
+
+    return error;
 }
