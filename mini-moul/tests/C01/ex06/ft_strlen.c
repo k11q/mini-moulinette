@@ -63,7 +63,7 @@ int run_tests(t_test *tests, int count)
         }
         else
         {
-            printf("  " GREEN CHECKMARK GREY " [%d] ft_strlen(\"%s\") output %d\n" DEFAULT, i + 1, tests[i].input, result);
+            printf("  " GREEN CHECKMARK GREY " [%d] ft_strlen(\"%s\") output %d as expected\n" DEFAULT, i + 1, tests[i].input, result);
         }
     }
 
