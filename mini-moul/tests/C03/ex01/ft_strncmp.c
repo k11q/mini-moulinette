@@ -19,40 +19,83 @@ int main(void)
 {
     t_test tests[] = {
         {
-            .desc = "Comparing equal strings",
-            .s1 = "Hello",
-            .s2 = "Hello",
-            .n = 5,
+            .desc = "Comparing empty strings with n > 0",
+            .s1 = "",
+            .s2 = "",
+            .n = 1,
             .expected = 0,
         },
         {
-            .desc = "Comparing strings with same prefix",
+            .desc = "Comparing non-empty string with empty string",
             .s1 = "Hello",
-            .s2 = "HelloWorld",
-            .n = 8,
-            .expected = -1,
+            .s2 = "",
+            .n = 3,
+            .expected = 'H',
         },
         {
-            .desc = "Comparing different strings",
-            .s1 = "Hello",
+            .desc = "Comparing empty string with non-empty string",
+            .s1 = "",
             .s2 = "World",
-            .n = 5,
-            .expected = -1,
+            .n = 4,
+            .expected = -87,
         },
         {
-            .desc = "Comparing same string with different n values",
+            .desc = "Comparing same string with n = 0",
+            .s1 = "Hello",
+            .s2 = "Hello",
+            .n = 0,
+            .expected = 0,
+        },
+        {
+            .desc = "Comparing strings with different character case",
+            .s1 = "Hello",
+            .s2 = "hELLO",
+            .n = 3,
+            .expected = 0,
+        },
+        {
+            .desc = "Comparing strings with different character case",
+            .s1 = "Hello",
+            .s2 = "hELLO",
+            .n = 4,
+            .expected = 32,
+        },
+        {
+            .desc = "Comparing strings with different character case",
+            .s1 = "Hello",
+            .s2 = "hELLO",
+            .n = 5,
+            .expected = 32,
+        },
+        {
+            .desc = "Comparing strings with different character case",
+            .s1 = "Hello",
+            .s2 = "hELLO",
+            .n = 6,
+            .expected = 0,
+        },
+        {
+            .desc = "Comparing same string with n > length of string",
             .s1 = "Hello",
             .s2 = "Hello",
             .n = 6,
             .expected = 0,
         },
         {
-            .desc = "Comparing empty strings",
-            .s1 = "",
-            .s2 = "",
-            .n = 5,
-            .expected = 0,
-        }};
+            .desc = "Comparing different string with n > length of string",
+            .s1 = "Hello",
+            .s2 = "World",
+            .n = 6,
+            .expected = -15,
+        },
+        {
+            .desc = "Comparing different string with n > length of both strings",
+            .s1 = "Hello",
+            .s2 = "World",
+            .n = 10,
+            .expected = -15,
+        }
+    };
     int count = sizeof(tests) / sizeof(tests[0]);
 
     return run_tests(tests, count);
