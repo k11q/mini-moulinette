@@ -109,7 +109,7 @@ cd ~/mini-moulinette/mini-moul/tests
 
 The current directory contains all the test cases. Every test is in the file that is the same name as the function/program it is testing, e.g. C05/ex00/ft_iterative_factorial.c will contain test for C05 > ex00 > ft_iterative_factorial.c.
 
-The test is usually put in a list of array in this structure, e.g. for ft_iterative_factorial test:
+The test cases are usually put in a list of array in this structure, e.g. for ft_iterative_factorial test:
 
 ``` C
  t_test tests[] = {
