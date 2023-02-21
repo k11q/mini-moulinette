@@ -37,7 +37,32 @@ int main(void)
 	     .expected = "0123456789"},
 	    {.desc = "ft_putstr_non_printable(\"This is a long string. It has more than 16 bytes.\")",
 	     .src = "This is a long string. It has more than 16 bytes.",
-	     .expected = "This is a long string. It has more than 16 bytes."}
+	     .expected = "This is a long string. It has more than 16 bytes."},
+	    {
+		.desc = "Print non-printable ASCII characters",
+		.src = "Some\nrandom\ttext\x0Fwith\nnon-printable\rcharacters",
+		.expected = "Some\\0arandom\\09text\\0fwith\\0anon-printable\\0dcharacters",
+	    },
+	    {
+		.desc = "Print empty string",
+		.src = "",
+		.expected = "",
+	    },
+	    {
+		.desc = "Print string with only printable characters",
+		.src = "Hello, world!",
+		.expected = "Hello, world!",
+	    },
+	    {
+		.desc = "Print string with more than 16 bytes",
+		.src = "This is a long string. It has more than 16 bytes.",
+		.expected = "This is a long string. It has more than 16 bytes.",
+	    },
+	    {
+		.desc = "Print string with exactly 16 bytes",
+		.src = "0123456789ABCDEF",
+		.expected = "0123456789ABCDEF",
+	    },
 	    // Add more test cases here
 	};
 	int count = sizeof(tests) / sizeof(tests[0]);
