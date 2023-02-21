@@ -93,7 +93,7 @@ int main(void)
             .s1 = "Hello",
             .s2 = "World",
             .n = 3,
-            .expected = 0,
+            .expected = -15,
         },
         {
             .desc = "Comparing strings where n is smaller than s2",
