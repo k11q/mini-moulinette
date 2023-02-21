@@ -32,6 +32,7 @@ main()
         if [ -d "$dir" ] && [ "$dirname" == "$1" ]; then
             dirname_found=1
             print_header
+            run_norminette
             printf "${GREEN} Generating test for ${1}...\n${DEFAULT}"
             space
             dirname_found=1
@@ -176,6 +177,15 @@ check_dependency()
         printf "    sudo apt-get install jq\n"
         printf "  macOS/Homebrew:\n"
         printf "    brew install jq\n"
+    fi
+}
+
+run_norminette()
+{
+    if command -v norminette &> /dev/null; then
+        norminette
+    else
+        echo "norminette not found, skipping norminette checks"
     fi
 }
 
