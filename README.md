@@ -90,22 +90,22 @@ mini C03
 
 ## Status
 
-| Assignment            | Coverage                   | Accuracy         |
-| :-------------------- | :------------------------: | :--------------: |
-| C00                   | 9/9                        | 99%              |
-| C01                   | 9/9                        | 99%              |
-| C02                   | 12/13                      | 99%              |
-| C03                   | 6/6                        | 99%              |
-| C04                   | 6/6                        | 99%              |
-| C05                   | 8/9                        | 99%              |
-| C06                   | 4/4                        | 99%              |
-| C07                   | 6/6                        | 99%              |
-| C08                   | 0/6                        | Not yet rated    |
-| C09                   | 0/3                        | Not yet rated    |
-| C10                   | 0/4                        | Not yet rated    |
-| C11                   | 0/8                        | Not yet rated    |
-| C12                   | 0/18                       | Not yet rated    |
-| C13                   | 0/8                        | Not yet rated    |
+| Assignment            | Coverage                   | Accuracy         | Remarks
+| :-------------------- | :------------------------: | :--------------: | :-------------- |
+| C00                   | 9/9                        | 99%              |                 |
+| C01                   | 9/9                        | 99%              |                 |
+| C02                   | 12/13                      | 99%              |                 |
+| C03                   | 6/6                        | 99%              |                 |
+| C04                   | 6/6                        | 99%              |                 |
+| C05                   | 8/9                        | Unset            | ex05, ex06, ex07 not accurate |
+| C06                   | 4/4                        | 99%              |                 |
+| C07                   | 6/6                        | 99%              |                 |
+| C08                   | 0/6                        | Not yet rated    |                 |
+| C09                   | 0/3                        | Not yet rated    |                 |
+| C10                   | 0/4                        | Not yet rated    |                 |
+| C11                   | 0/8                        | Not yet rated    |                 |
+| C12                   | 0/18                       | Not yet rated    |                 |
+| C13                   | 0/8                        | Not yet rated    |                 |
 
 
 ## Contributing
