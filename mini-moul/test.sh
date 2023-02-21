@@ -45,7 +45,7 @@ main()
                 test_name="$(ls $assignment/*.c | head -n 1)"
                 test_name="$(basename "$test_name")"
                 
-                if cc -Wall -Werror -Wextra -o test1 $(ls $assignment/*.c | head -n 1) 2> /dev/null; then
+                if cc -Wall -Werror -Wextra -o test1 $(ls $assignment/*.c | head -n 1); then
                     rm test1
                     checks=$((checks+1))
                     passed=$((passed+1))
