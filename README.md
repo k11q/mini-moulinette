@@ -22,6 +22,19 @@ This is now day 11 of piscine. I have wasted so many hours getting evaluated, do
 > Mini-moulinette doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
 
 
+# Updating
+
+Mini moulinette is updated daily, to update:
+
+```bash
+cd ~/mini-moulinette
+```
+
+```bash
+git pull
+```
+
+
 ## Get Started
 
 1. Go to your root `~` directory.
