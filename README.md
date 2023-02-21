@@ -34,6 +34,8 @@ cd ~/mini-moulinette
 git pull
 ```
 
+> ***Warning***
+> Mini moulinette is not 100% accurate. Use with caution.
 
 ## Get Started
 
@@ -87,19 +89,76 @@ mini C03
 
 6. You can now run it for every assignment directory, where tests are provided. Have fun!
 
+## Debugging
+
+The error/success messages should be explicit enough. However sometimes you will get segmentation fault or your code doesn't compile
+
+### If your code doesn't compile
+
+- Check the headers
+- Check if it contains main inside
+- Check if your function name is similar to a function from standard library, if it is then it will have problem
+
+### If you receive segmentation fault
+
+- You need to find the test cases, go here:
+
+```bash
+cd ~/mini-moulinette/mini-moul/tests
+```
+
+The current directory contains all the test cases. Every test is in the file that is the same name as the function/program it is testing, e.g. C05/ex00/ft_iterative_factorial.c will contain test for C05 > ex00 > ft_iterative_factorial.c.
+
+The test is usually put in a list of array in this structure, e.g. for ft_iterative_factorial test:
+
+``` C
+ t_test tests[] = {
+        {
+            .desc = "Factorial of 0",
+            .n = 0,
+            .expected = 1,
+        },
+        {
+            .desc = "Factorial of 1",
+            .n = 1,
+            .expected = 1,
+        },
+        {
+            .desc = "Factorial of 2",
+            .n = 2,
+            .expected = 2,
+        },
+        {
+            .desc = "Factorial of 10",
+            .n = 10,
+            .expected = 3628800,
+        },
+        {
+            .desc = "Factorial of a negative number",
+            .n = -5,
+            .expected = 0,
+        },
+ }
+```
+
+
+## Customizing
+
+See the above, you can add more tests here. You need to manage your customization yourself when you pull for updates though.
+
 
 ## Status
 
-| Assignment            | Coverage                   | Accuracy         | Remarks
+| Assignment            | Coverage                   | Accuracy         | Remarks         |
 | :-------------------- | :------------------------: | :--------------: | :-------------- |
-| C00                   | 9/9                        | 99%              |                 |
-| C01                   | 9/9                        | 99%              |                 |
-| C02                   | 12/13                      | 99%              |                 |
-| C03                   | 6/6                        | 99%              |                 |
-| C04                   | 6/6                        | 99%              |                 |
-| C05                   | 8/9                        | Unset            | ex05, ex06, ex07 not accurate |
-| C06                   | 4/4                        | 99%              |                 |
-| C07                   | 6/6                        | 99%              |                 |
+| C00                   | 9/9                        | Not yet rated    |                 |
+| C01                   | 9/9                        | Not yet rated    |                 |
+| C02                   | 12/13                      | Not yet rated    |                 |
+| C03                   | 6/6                        | Not yet rated    |                 |
+| C04                   | 6/6                        | Not yet rated    |                 |
+| C05                   | 8/9                        | Not yet rated    | ex05, ex06, ex07 not accurate |
+| C06                   | 4/4                        | Not yet rated    |                 |
+| C07                   | 6/6                        | Not yet rated    |                 |
 | C08                   | 0/6                        | Not yet rated    |                 |
 | C09                   | 0/3                        | Not yet rated    |                 |
 | C10                   | 0/4                        | Not yet rated    |                 |
