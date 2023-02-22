@@ -34,10 +34,11 @@ cd ~/mini-moulinette
 git pull
 ```
 
-> ***Warning***
-> Mini moulinette is not 100% accurate. Use with caution.
 
 ## Get Started
+
+> ***Warning***
+> Mini moulinette is not 100% accurate, the tests may not cover every edge cases like moulinette. Use with caution.
 
 1. Go to your root `~` directory.
 
