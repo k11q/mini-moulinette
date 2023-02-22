@@ -5,70 +5,76 @@
 #include "../../../../ex02/ft_swap.c"
 #include "../../../utils/constants.h"
 
-int test1(void);
-int test2(void);
-int test3(void);
+typedef struct s_test
+{
+    char *desc;
+    int x;
+    int y;
+    int expected_x;
+    int expected_y;
+} t_test;
+
+int run_tests(t_test *tests, int count);
 
 int main(void)
 {
-	if (test1()+test2()+test3() != 0)
-		return (-1);
-	return (0);
+    t_test tests[] = {
+        {
+            .desc = "Swap two positive integers",
+            .x = 2,
+            .y = 3,
+            .expected_x = 3,
+            .expected_y = 2,
+        },
+        {
+            .desc = "Swap a positive and negative integer",
+            .x = 9,
+            .y = -4,
+            .expected_x = -4,
+            .expected_y = 9,
+        },
+        {
+            .desc = "Swap two negative integers",
+            .x = -32,
+            .y = 54,
+            .expected_x = 54,
+            .expected_y = -32,
+        },
+	{
+            .desc = "Swap numbers that may exceed INT_MAX if added",
+            .x = 4576878,
+            .y = 4576878,
+            .expected_x = 4576878,
+            .expected_y = 4576878,
+        },
+    };
+    int count = sizeof(tests) / sizeof(tests[0]);
+
+    return run_tests(tests, count);
 }
 
-int test1(void)
+int run_tests(t_test *tests, int count)
 {
-	int	x;
-	int	y;
-	
-	x = 2;
-	y = 3;
-	ft_swap(&x, &y);
+    int i;
+    int error = 0;
 
-	if (x != 3 || y != 2)
-	{
-		printf("    " RED "[1] ft_swap(x = 2, y = 3) Expected x = 3, got %d. Expected y = 2, got %d\n" DEFAULT, x, y);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [1] ft_swap(x = 2, y = 3) output x = 3, y = 2\n" DEFAULT);
-	return (0);
-}
+    for (i = 0; i < count; i++)
+    {
+        int x = tests[i].x;
+        int y = tests[i].y;
 
-int test2(void)
-{
-	int	x;
-	int	y;
-	
-	x = 9;
-	y = -4;
-	ft_swap(&x, &y);
+        ft_swap(&x, &y);
 
-	if (x != -4 || y != 9)
-	{
-		printf("    " RED "[2] ft_swap(x = 9, y = -4) Expected x = -4, got %d. Expected y = 9, got %d\n" DEFAULT, x, y);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [2] ft_swap(x = 9, y = -4) output x = -4, y = 9\n" DEFAULT);
-	return (0);
-}
+        if (x != tests[i].expected_x || y != tests[i].expected_y)
+        {
+            printf("    " RED "[%d] %s Expected x = %d, y = %d, got x = %d, y = %d\n" DEFAULT, i + 1, tests[i].desc, tests[i].expected_x, tests[i].expected_y, x, y);
+            error--;
+        }
+        else
+        {
+            printf("  " GREEN CHECKMARK GREY " [%d] %s Passed\n" DEFAULT, i + 1, tests[i].desc);
+        }
+    }
 
-int test3(void)
-{
-	int	x;
-	int	y;
-	
-	x = -32;
-	y = 54;
-	ft_swap(&x, &y);
-
-	if (x != 54 || y != -32)
-	{
-		printf("    " RED "[3] ft_swap(x = -32, y = 54) Expected x = 54, got %d. Expected y = -32, got %d\n" DEFAULT, x, y);
-		return (-1);
-	}
-	else
-		printf("  " GREEN CHECKMARK GREY " [3] ft_swap(x = -32, y = 54) output x = 54, y = -32\n" DEFAULT);
-	return (0);
+    return error;
 }
