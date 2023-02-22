@@ -18,9 +18,6 @@ This is now day 11 of piscine. I have wasted so many hours getting evaluated, do
 - It will then output the result.
 - The scores are based on 42's practice, where if easier/earlier questions are incorrect, the rest won't count.
 
-> ***Note***
-> Mini-moulinette doesn't check if there's extra files or norm, you need to do it manually. Pair it with `norminette` and `ls */*` , you are good to go!
-
 
 # Updating
 
