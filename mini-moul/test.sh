@@ -179,17 +179,6 @@ check_dependency()
     fi
 }
 
-run_norminette()
-{
-    if command -v norminette &> /dev/null; then
-        cd ..
-        norminette
-        cd mini-moul
-    else
-        echo "norminette not found, skipping norminette checks"
-    fi
-}
-
 #check_dependency
 if [ "${1}" = "" ]; then
     printf "Please select an assignment. e.g. './test.sh C01'\n"
