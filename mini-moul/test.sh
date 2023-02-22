@@ -32,7 +32,6 @@ main()
         if [ -d "$dir" ] && [ "$dirname" == "$1" ]; then
             dirname_found=1
             print_header
-            run_norminette
             printf "${GREEN} Generating test for ${1}...\n${DEFAULT}"
             space
             dirname_found=1
@@ -183,7 +182,9 @@ check_dependency()
 run_norminette()
 {
     if command -v norminette &> /dev/null; then
+        cd ..
         norminette
+        cd mini-moul
     else
         echo "norminette not found, skipping norminette checks"
     fi
