@@ -159,7 +159,7 @@ See the above, you can add more tests here. You need to manage your customizatio
 | C05                   | 8/9                        | Not yet rated    | ex05, ex06, ex07 tests doesn't cover all edge cases |
 | C06                   | 4/4                        | Not yet rated    |                 |
 | C07                   | 6/6                        | Not yet rated    | ex02, ex03 tests doesn't cover all edge cases |
-| C08                   | 6/6                        | Not yet rated    | ex00 test doesn't cover all edge cases, others just cover compilation |
+| C08                   | 6/6                        | Not yet rated    | every tests mostly just cover compilation |
 | C09                   | 0/3                        | Not yet rated    |                 |
 | C10                   | 0/4                        | Not yet rated    |                 |
 | C11                   | 0/8                        | Not yet rated    |                 |
