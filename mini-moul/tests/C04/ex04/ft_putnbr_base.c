@@ -18,38 +18,73 @@ int run_tests(t_test *tests, int count);
 int main(void)
 {
     t_test tests[] = {
-        {
-            .desc = "Convert a negative decimal number to binary",
-            .nbr = -12,
-            .base = "01",
-            .expected = "-1100",
-        },
-        {
-            .desc = "Convert a decimal number to custom base",
-            .nbr = 40,
-            .base = "poneyvif",
-            .expected = "vp",
-        },
-        {
-            .desc = "Convert a decimal number to decimal",
-            .nbr = 894867,
-            .base = "0123456789",
-            .expected = "894867",
-        },
-        {
-            .desc = "Convert a decimal number to hexadecimal",
-            .nbr = 53,
-            .base = "0123456789abcdef",
-            .expected = "35",
-        },
-        {
-            .desc = "Convert zero to binary",
-            .nbr = 0,
-            .base = "01",
-            .expected = "0",
-        },
-        // Add more test cases here
-    };
+    {
+        .desc = "Convert a negative decimal number to binary",
+        .nbr = -12,
+        .base = "01",
+        .expected = "-1100",
+    },
+    {
+        .desc = "Convert a decimal number to custom base",
+        .nbr = 40,
+        .base = "poneyvif",
+        .expected = "vp",
+    },
+    {
+        .desc = "Convert a decimal number to decimal",
+        .nbr = 894867,
+        .base = "0123456789",
+        .expected = "894867",
+    },
+    {
+        .desc = "Convert a decimal number to hexadecimal",
+        .nbr = 53,
+        .base = "0123456789abcdef",
+        .expected = "35",
+    },
+    {
+        .desc = "Convert zero to binary",
+        .nbr = 0,
+        .base = "01",
+        .expected = "0",
+    },
+    {
+        .desc = "NULL base string",
+        .nbr = 123,
+        .base = NULL,
+        .expected = "",
+    },
+    {
+        .desc = "Empty base string",
+        .nbr = 123,
+        .base = "",
+        .expected = "",
+    },
+    {
+        .desc = "Invalid base string with duplicate characters",
+        .nbr = 123,
+        .base = "abccde",
+        .expected = "",
+    },
+    {
+        .desc = "Smallest possible negative value",
+        .nbr = -2147483648,
+        .base = "01",
+        .expected = "-10000000000000000000000000000000",
+    },
+    {
+        .desc = "Largest possible positive value",
+        .nbr = 2147483647,
+        .base = "0123456789abcdef",
+        .expected = "7fffffff",
+    },
+    {
+        .desc = "Base string with one character",
+        .nbr = 123,
+        .base = "a",
+        .expected = "aaaaaaaaaaaa",
+    },
+};
     int count = sizeof(tests) / sizeof(tests[0]);
 
     return run_tests(tests, count);
