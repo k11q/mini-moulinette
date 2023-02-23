@@ -40,7 +40,116 @@ int main(void)
             .desc = "Convert integer with non-numeric suffix",
             .input = "123abc",
             .expected = 123,
-        },
+        },	{
+    .desc = "Convert positive zero",
+    .input = "0",
+    .expected = 0,
+},
+{
+    .desc = "Convert negative zero",
+    .input = "-0",
+    .expected = 0,
+},
+{
+    .desc = "Convert integer with leading zeros",
+    .input = "000123",
+    .expected = 123,
+},
+{
+    .desc = "Convert integer with leading zeros and plus sign",
+    .input = "+000123",
+    .expected = 123,
+},
+{
+    .desc = "Convert integer with maximum value for int",
+    .input = "2147483647",
+    .expected = 2147483647,
+},
+{
+    .desc = "Convert integer with minimum value for int",
+    .input = "-2147483648",
+    .expected = -2147483648,
+},
+{
+    .desc = "Convert integer with overflow value",
+    .input = "2147483648",
+    .expected = -2147483648,
+},
+{
+    .desc = "Convert integer with underflow value",
+    .input = "-2147483649",
+    .expected = 2147483647,
+},
+{
+    .desc = "Convert integer with only negative sign",
+    .input = "-",
+    .expected = 0,
+},
+{
+    .desc = "Convert integer with only plus sign",
+    .input = "+",
+    .expected = 0,
+},
+{
+    .desc = "Convert empty string",
+    .input = "",
+    .expected = 0,
+},
+{
+    .desc = "Convert string with only spaces",
+    .input = "   ",
+    .expected = 0,
+},
+{
+    .desc = "Convert string with spaces between digits",
+    .input = "12 34",
+    .expected = 12,
+},
+{
+    .desc = "Convert string with mixed spaces and signs",
+    .input = "   +12 34",
+    .expected = 12,
+},
+{
+    .desc = "Convert string with non-numeric prefix",
+    .input = "abc123",
+    .expected = 0,
+},
+{
+    .desc = "Convert string with non-numeric prefix and sign",
+    .input = "+abc123",
+    .expected = 0,
+},
+{
+    .desc = "Convert string with non-numeric suffix and sign",
+    .input = "123abc+",
+    .expected = 123,
+},
+{
+    .desc = "Convert string with leading whitespaces, sign and zero",
+    .input = "   - 0000",
+    .expected = 0,
+},
+{
+    .desc = "Convert string with multiple signs",
+    .input = "--123",
+    .expected = 123,
+},
+{
+    .desc = "Convert string with multiple signs",
+    .input = "++123",
+    .expected = 123,
+},
+{
+    .desc = "Convert string with invalid signs",
+    .input = "+-123",
+    .expected = -123,
+},
+{
+    .desc = "Convert string with out of range chars",
+    .input = "1 2 3 4 5 6 7 8 9 0 a b c d e f g h i j k l m n o p q r s t u v w x y z",
+    .expected = 1,
+},
     };
     int count = sizeof(tests) / sizeof(tests[0]);
 
