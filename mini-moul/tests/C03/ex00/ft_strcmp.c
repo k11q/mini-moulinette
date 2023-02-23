@@ -47,6 +47,66 @@ int main(void)
             .s2 = "",
             .expected = 72,
         },
+        {
+            .desc = "Compare two strings of length 1",
+            .s1 = "a",
+            .s2 = "b",
+            .expected = -1,
+        },
+        {
+            .desc = "Compare two strings of length 1 (reversed)",
+            .s1 = "b",
+            .s2 = "a",
+            .expected = 1,
+        },
+        {
+            .desc = "Compare two strings of length 2",
+            .s1 = "ab",
+            .s2 = "ac",
+            .expected = -1,
+        },
+        {
+            .desc = "Compare two strings of length 2 (reversed)",
+            .s1 = "ac",
+            .s2 = "ab",
+            .expected = 1,
+        },
+        {
+            .desc = "Compare two strings with null character",
+            .s1 = "Hello\0world",
+            .s2 = "Hello",
+            .expected = 0,
+        },
+        {
+            .desc = "Compare two strings with null character (reversed)",
+            .s1 = "Hello",
+            .s2 = "Hello\0world",
+            .expected = 0,
+        },
+        {
+            .desc = "Compare two strings with multiple null characters",
+            .s1 = "Hello\0world\0",
+            .s2 = "Hello\0",
+            .expected = 0,
+        },
+        {
+            .desc = "Compare two strings with multiple null characters (reversed)",
+            .s1 = "Hello\0",
+            .s2 = "Hello\0world\0",
+            .expected = 0,
+        },
+        {
+            .desc = "Compare two identical strings with different pointers",
+            .s1 = "Hello",
+            .s2 = strdup("Hello"),
+            .expected = 0,
+        },
+        {
+            .desc = "Compare two non-identical strings with different pointers",
+            .s1 = "Hello",
+            .s2 = strdup("World"),
+            .expected = -15,
+        },
     };
     int count = sizeof(tests) / sizeof(tests[0]);
 
