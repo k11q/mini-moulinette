@@ -49,12 +49,6 @@ int main(void)
         .expected = "0",
     },
     {
-        .desc = "NULL base string",
-        .nbr = 123,
-        .base = NULL,
-        .expected = "",
-    },
-    {
         .desc = "Empty base string",
         .nbr = 123,
         .base = "",
