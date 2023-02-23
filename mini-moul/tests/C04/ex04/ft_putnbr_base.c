@@ -76,7 +76,7 @@ int main(void)
         .desc = "Base string with one character",
         .nbr = 123,
         .base = "a",
-        .expected = "aaaaaaaaaaaa",
+        .expected = "",
     },
 };
     int count = sizeof(tests) / sizeof(tests[0]);
