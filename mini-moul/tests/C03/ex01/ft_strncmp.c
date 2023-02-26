@@ -179,7 +179,13 @@ int main(void)
             .n = 5,
             .expected = 72,
         },
-
+        {
+            .desc = "Comparing string with different ends and n is smaller than size",
+            .s1 = "Hello",
+            .s2 = "Hellz",
+            .n = 4,
+            .expected = 0,
+        },
     };
     int count = sizeof(tests) / sizeof(tests[0]);
 
