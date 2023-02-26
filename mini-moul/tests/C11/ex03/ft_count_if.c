@@ -55,7 +55,7 @@ int main(void)
             .desc = "Array with one string with digit",
             .tab = (char*[]){ "hello", "3", "world", NULL },
             .length = 3,
-            .expected = 1,
+            .expected = 0,
         },
         {
             .desc = "Array with no strings starting with t or with digits",
@@ -67,19 +67,19 @@ int main(void)
             .desc = "Array with all strings starting with t",
             .tab = (char*[]){ "test", "true", "Turing", "TARDIS", NULL },
             .length = 4,
-            .expected = 4,
+            .expected = 2,
         },
         {
             .desc = "Array with all strings with digits",
             .tab = (char*[]){ "123", "456", "7890", NULL },
             .length = 3,
-            .expected = 3,
+            .expected = 0,
         },
         {
             .desc = "Array with all strings starting with t and with digits",
             .tab = (char*[]){ "test", "textbook", "2010", "twenty-two", NULL },
             .length = 4,
-            .expected = 2,
+            .expected = 3,
         },
     };
     int count = sizeof(tests) / sizeof(tests[0]);
