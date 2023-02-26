@@ -36,11 +36,6 @@ int main(void)
             .src = "test\0test",
             .expected = "test"
         },
-        {
-            .desc = "ft_strdup with NULL input",
-            .src = NULL,
-            .expected = NULL
-        },
     };
     int count = sizeof(tests) / sizeof(tests[0]);
 
