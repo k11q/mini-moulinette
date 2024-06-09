@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #constants
 readonly GREEN='\033[38;5;84m'
 readonly RED='\033[38;5;197m'

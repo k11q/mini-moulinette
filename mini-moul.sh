@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source ~/mini-moulinette/mini-moul/config.sh
 
 function handle_sigint {
