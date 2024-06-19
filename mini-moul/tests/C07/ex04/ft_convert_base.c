@@ -56,7 +56,6 @@ int main(void)
             .base_to = "5",
             .expected = NULL,
         },
-	*/
     };
     int count = sizeof(tests) / sizeof(tests[0]);
 
