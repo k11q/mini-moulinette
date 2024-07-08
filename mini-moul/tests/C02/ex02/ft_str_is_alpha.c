@@ -23,14 +23,14 @@ int	test2(void)
 {
 	int result;
 
-	result = ft_str_is_alpha("abcdefghijk2l");
+	result = ft_str_is_alpha("abcghij[`aBCZ");
 	if (result != 0)
 	{
-		printf("    " RED "[2] ft_str_is_alpha(\"abcdefghijk2l\") Expected 0, got %d\n", result);
+		printf("    " RED "[2] ft_str_is_alpha(\"abcghij[`aBCZ\") Expected 0, got %d\n", result);
 		return (-1);
 	}
 	else
-		printf("  "GREEN CHECKMARK GREY" [2] ft_str_is_alpha(\"abcdefghijk2l\") Expected 0, got %d\n"DEFAULT, result);
+		printf("  "GREEN CHECKMARK GREY" [2] ft_str_is_alpha(\"abcghij[`aBCZ\") Expected 0, got %d\n"DEFAULT, result);
 	return (0);
 }
 
