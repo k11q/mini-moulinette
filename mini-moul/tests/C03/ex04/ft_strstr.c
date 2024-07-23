@@ -47,6 +47,12 @@ int main(void)
             .find = "abcd",
             .expected_output = NULL,
         },
+        {
+            .desc = "Find a substring with existing characters",
+            .str = "-62,47 +62,47",
+            .find = "-47",
+            .expected_output = NULL,
+        },
     };
     int count = sizeof(tests) / sizeof(tests[0]);
 
