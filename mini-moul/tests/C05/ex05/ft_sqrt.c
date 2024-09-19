@@ -42,6 +42,11 @@ int main(void)
             .n = -5,
             .expected = 0,
         },
+        {
+            .desc = "Square root of a maximun integer",
+            .n = 2147483647,
+            .expected = 0,
+        },
         // Add more test cases here
     };
     int count = sizeof(tests) / sizeof(tests[0]);
