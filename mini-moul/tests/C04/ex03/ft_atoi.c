@@ -151,6 +151,11 @@ int main(void)
             .input = "1 2 3 4 5 6 7 8 9 0 a b c d e f g h i j k l m n o p q r s t u v w x y z",
             .expected = 1,
         },
+        {
+            .desc = "Convert string with whitespace characters",
+            .input = "\f \n \r \t \v 123",
+            .expected = 123,
+	}
     };
     int count = sizeof(tests) / sizeof(tests[0]);
 
